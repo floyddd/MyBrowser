@@ -37,14 +37,12 @@
 
     [self loadWebPageFromString:self.searchBar.text];
     [sender resignFirstResponder];
-    self.addressBar.text=@"http://www.google.com/search?q=%@",[self.searchBar text ];
+    self.addressBar.text=@"google.com/search?q=%@",[self.searchBar text ];
         self.addButton.enabled=YES;
-    if (self.checkConnection) {
-        self.noConnectionLabel.hidden=YES;
-    } else if (!self.checkConnection){
+   if (!self.checkConnection){
         self.noConnectionLabel.hidden=NO;
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
-    }
+   } else self.noConnectionLabel.hidden=YES;
 }
 
 - (IBAction)goBack:(id)sender {
@@ -111,14 +109,17 @@
 -(BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
 
     if (navigationType==UIWebViewNavigationTypeLinkClicked) {
-       
+        
         NSURL *URL=[request URL];
         if ([URL scheme] ) {
             self.addressBar.text=URL.absoluteString;
             self.searchBar.text=NULL;
 
             [self.webView loadRequest:request];
-                    }
+            if (!self.checkConnection){
+                self.noConnectionLabel.hidden=NO;
+                [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+            } else self.noConnectionLabel.hidden=YES;    }
         return NO;
     }
     return YES;
@@ -132,16 +133,14 @@
     
     
     [self loadAddress:self.addressBar.text];
-    self.addressBar.text=[NSString stringWithFormat:@"http://www.%@",self.addressBar.text];
+    /*self.addressBar.text=[NSString stringWithFormat:@"http://www.%@",self.addressBar.text];*/
     [sender resignFirstResponder];
     self.searchBar.text =NULL;
-    if (self.checkConnection) {
-        self.noConnectionLabel.hidden=YES;
-    } else if (!self.checkConnection){
+  if (!self.checkConnection){
         self.noConnectionLabel.hidden=NO;
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
     }
-    
+    else self.noConnectionLabel.hidden=YES;
     
     
         
