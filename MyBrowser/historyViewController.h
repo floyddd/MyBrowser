@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "AppDelegate.h"
 @interface historyViewController : UIViewController
 - (IBAction)goBack:(id)sender;
-@property(strong,nonatomic) NSMutableArray *histories;
+
 @end

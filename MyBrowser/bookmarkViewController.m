@@ -39,7 +39,7 @@
     
     // Configure the cell...
     AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSMutableArray *a=maindelegate.sharedArray;
+    NSMutableArray *a=maindelegate.bookmarksArray;
     cell.textLabel.text = [a objectAtIndex:indexPath.row];
     return cell;
    
@@ -58,7 +58,7 @@
 {
     // Return the number of rows in the section.
     AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSMutableArray *a=maindelegate.sharedArray;
+    NSMutableArray *a=maindelegate.bookmarksArray;
     return [a count];
 }
 - (void)viewDidLoad

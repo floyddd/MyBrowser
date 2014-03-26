@@ -12,7 +12,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    _sharedArray = [[NSMutableArray alloc]initWithObjects:@"http://www.facebook.com",@"http://www.twitter.com",nil];
+    _bookmarksArray = [[NSMutableArray alloc]initWithObjects:@"http://www.facebook.com",@"http://www.twitter.com",nil];
+    _historyArray = [[NSMutableArray alloc] init];
+    
     return YES;
 }
 							

@@ -21,8 +21,10 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSMutableArray *a=historydelegate.historyArray;
     // Return the number of rows in the section.
-    return [self.histories count];
+    return [a count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -33,7 +35,9 @@
     }
     
     // Configure the cell...
-    cell.textLabel.text = [self.histories objectAtIndex:indexPath.row];
+    AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSMutableArray *a=historydelegate.historyArray;
+    cell.textLabel.text = [a objectAtIndex:indexPath.row];
     return cell;
     
     

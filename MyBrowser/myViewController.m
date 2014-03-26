@@ -27,6 +27,9 @@
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
     self.addButton.enabled=YES;
+    AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSMutableArray *a=historydelegate.historyArray;
+    [a addObject:self.addressBar.text];
    }
 - (void)didReceiveMemoryWarning
 {
@@ -37,7 +40,10 @@
 
     [self loadWebPageFromString:self.searchBar.text];
     [sender resignFirstResponder];
-    self.addressBar.text=@"google.com/search?q=%@",[self.searchBar text ];
+ self.addressBar.text=[NSString stringWithFormat: @"google.com/search?q=%@",self.searchBar.text] ;
+    AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSMutableArray *a=historydelegate.historyArray;
+    [a addObject:self.addressBar.text];
         self.addButton.enabled=YES;
    if (!self.checkConnection){
         self.noConnectionLabel.hidden=NO;
@@ -73,12 +79,12 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSMutableArray *a=maindelegate.sharedArray;
+    NSMutableArray *a=maindelegate.bookmarksArray;
         if([segue.identifier isEqualToString:@"segueOne"]){
             
             if ([self.addressBar.text length]!=0){
-                
-                [a addObject:self.addressBar.text];
+                NSString *b=[NSString stringWithFormat:@"%@",self.addressBar.text];
+                [a addObject:b];
             
         
             }}}
@@ -107,19 +113,19 @@
 
 
 -(BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-
+    
     if (navigationType==UIWebViewNavigationTypeLinkClicked) {
-        
+        AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+        NSMutableArray *a=historydelegate.historyArray;
+        [a addObject:self.addressBar.text];
         NSURL *URL=[request URL];
         if ([URL scheme] ) {
+            
             self.addressBar.text=URL.absoluteString;
             self.searchBar.text=NULL;
-
+            
             [self.webView loadRequest:request];
-            if (!self.checkConnection){
-                self.noConnectionLabel.hidden=NO;
-                [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
-            } else self.noConnectionLabel.hidden=YES;    }
+        }
         return NO;
     }
     return YES;
