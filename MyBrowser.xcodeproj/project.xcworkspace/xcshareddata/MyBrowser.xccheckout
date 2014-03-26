@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>6FBDF21E-E9D3-4429-9417-5D81DF4F9819</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MyBrowser</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EFB454EB-1F18-4FA6-82E2-E458831F9620</key>
+		<string>https://github.com/floyddd/MyBrowser.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MyBrowser.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EFB454EB-1F18-4FA6-82E2-E458831F9620</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/floyddd/MyBrowser.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EFB454EB-1F18-4FA6-82E2-E458831F9620</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EFB454EB-1F18-4FA6-82E2-E458831F9620</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MyBrowser</string>
+		</dict>
+	</array>
+</dict>
+</plist>

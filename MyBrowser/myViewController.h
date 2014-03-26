@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 
 
+@property (weak, nonatomic) IBOutlet UILabel *noConnectionLabel;
 @property (weak, nonatomic) IBOutlet UITextField *addressBar;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UITextField *searchBar;
@@ -30,7 +31,7 @@
 
 @property (nonatomic, weak) id <passTextfield> delegate;
 
--(void)checkConnection;
+-(BOOL)checkConnection;
 
 - (void) loadWebPageFromString:(NSString *)string;
 

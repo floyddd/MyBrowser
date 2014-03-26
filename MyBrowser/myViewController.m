@@ -18,7 +18,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- [self checkConnection ];
+    if (self.checkConnection==YES) {
+        self.noConnectionLabel.hidden=YES;
+    }
  self.addButton.enabled=NO;
     
 }
@@ -36,13 +38,18 @@
     [self loadWebPageFromString:self.searchBar.text];
     [sender resignFirstResponder];
     self.addressBar.text=@"http://www.google.com/search?q=%@",[self.searchBar text ];
- [self checkConnection ];
-    self.addButton.enabled=YES;
-    
+        self.addButton.enabled=YES;
+    if (self.checkConnection) {
+        self.noConnectionLabel.hidden=YES;
+    } else if (!self.checkConnection){
+        self.noConnectionLabel.hidden=NO;
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+    }
 }
 
 - (IBAction)goBack:(id)sender {
     [self.webView goBack];
+        self.searchBar.text=NULL;
        }
 
 - (IBAction)goForward:(id)sender {
@@ -55,19 +62,15 @@
     
 }
 
--(void)checkConnection{
+-(BOOL)checkConnection{
     NSURL *scriptUrl = [NSURL URLWithString:@"http://google.com"];
     NSData *data = [NSData dataWithContentsOfURL:scriptUrl];
     if (!data)
     {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Connection"
-    message:@"Your device is not connected to internet."
-    delegate:self cancelButtonTitle:@"OK"
-    otherButtonTitles:nil];
-    [alert show];
-        
+ 
+        return NO;
     }
-
+ return YES;
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
@@ -130,10 +133,14 @@
     
     [self loadAddress:self.addressBar.text];
     self.addressBar.text=[NSString stringWithFormat:@"http://www.%@",self.addressBar.text];
-     [sender resignFirstResponder];
+    [sender resignFirstResponder];
     self.searchBar.text =NULL;
-
-    [self checkConnection ];
+    if (self.checkConnection) {
+        self.noConnectionLabel.hidden=YES;
+    } else if (!self.checkConnection){
+        self.noConnectionLabel.hidden=NO;
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+    }
     
     
     
