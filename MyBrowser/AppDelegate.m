@@ -7,13 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import "myViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-   
+    _sharedArray = [[NSMutableArray alloc]initWithObjects:@"http://www.facebook.com",@"http://www.twitter.com",nil];
     return YES;
 }
 							

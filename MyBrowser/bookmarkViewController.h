@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-
+#import "myViewController.h"
 
 @interface bookmarkViewController : UIViewController
 
 
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
 - (IBAction)goBac:(id)sender;

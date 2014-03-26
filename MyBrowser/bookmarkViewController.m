@@ -7,7 +7,7 @@
 //
 
 #import "bookmarkViewController.h"
-
+#import "AppDelegate.h"
 @interface bookmarkViewController ()
 
 @end
@@ -26,6 +26,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
+    
     return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -37,7 +38,9 @@
     }
     
     // Configure the cell...
-    cell.textLabel.text = [self.bookmarks objectAtIndex:indexPath.row];
+    AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSMutableArray *a=maindelegate.sharedArray;
+    cell.textLabel.text = [a objectAtIndex:indexPath.row];
     return cell;
    
     
@@ -54,12 +57,15 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.bookmarks count];
+    AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSMutableArray *a=maindelegate.sharedArray;
+    return [a count];
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,6 +73,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 - (IBAction)goBac:(id)sender {
     

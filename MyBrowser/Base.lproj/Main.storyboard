@@ -70,13 +70,13 @@
                                     <barButtonItem width="12" style="plain" systemItem="fixedSpace" id="XDp-do-VVW"/>
                                     <barButtonItem systemItem="add" id="A5v-Qa-LNX">
                                         <connections>
-                                            <segue destination="XDu-U8-SsR" kind="modal" id="FSc-zx-WjT"/>
+                                            <segue destination="XDu-U8-SsR" kind="modal" identifier="segueOne" id="FSc-zx-WjT"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="13" style="plain" systemItem="fixedSpace" id="hRB-ka-Dwg"/>
                                     <barButtonItem systemItem="bookmarks" id="Iru-AT-1Ww">
                                         <connections>
-                                            <segue destination="XDu-U8-SsR" kind="modal" id="vm3-O3-J1h"/>
+                                            <segue destination="XDu-U8-SsR" kind="modal" identifier="segueTwo" id="vm3-O3-J1h"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="26" style="plain" systemItem="fixedSpace" id="7bm-XQ-VX8"/>
@@ -93,6 +93,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="A5v-Qa-LNX" id="kUr-u1-74F"/>
                         <outlet property="addressBar" destination="RGt-cH-UEP" id="8VD-8b-bCR"/>
                         <outlet property="goBackButton" destination="Nua-Za-qon" id="bcf-lu-IG3"/>
                         <outlet property="searchBar" destination="hjN-aj-Uxi" id="1hP-bl-mgv"/>
@@ -154,6 +155,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="PvQ-lk-Qao" id="AEj-KN-AKM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqz-IM-V9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -195,7 +199,7 @@
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="historyCell" id="bjE-KW-Ypk">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bjE-KW-Ypk">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bjE-KW-Ypk" id="BFb-Np-V5p">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
@@ -221,6 +225,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="vm3-O3-J1h"/>
+        <segue reference="FSc-zx-WjT"/>
     </inferredMetricsTieBreakers>
 </document>

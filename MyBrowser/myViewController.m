@@ -19,10 +19,12 @@
 {
     [super viewDidLoad];
  [self checkConnection ];
-  [self.webView loadRequest:[NSURLRequest requestWithURL: [NSURL URLWithString:@"http:/www.google.com/"]]];
-    }
+ self.addButton.enabled=NO;
+    
+}
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
+    self.addButton.enabled=YES;
    }
 - (void)didReceiveMemoryWarning
 {
@@ -33,8 +35,9 @@
 
     [self loadWebPageFromString:self.searchBar.text];
     [sender resignFirstResponder];
-    self.addressBar.text=NULL;
+    self.addressBar.text=@"http://www.google.com/search?q=%@",[self.searchBar text ];
  [self checkConnection ];
+    self.addButton.enabled=YES;
     
 }
 
@@ -66,9 +69,20 @@
     }
 
 }
-
-
-- (void) loadWebPageFromString:(NSString *)string {
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSMutableArray *a=maindelegate.sharedArray;
+        if([segue.identifier isEqualToString:@"segueOne"]){
+            
+            if ([self.addressBar.text length]!=0){
+                
+                [a addObject:self.addressBar.text];
+            
+        
+            }}}
+   
+    - (void) loadWebPageFromString:(NSString *)string {
     NSURL *url = [NSURL URLWithString:string];
     
   
@@ -81,8 +95,8 @@
 
 
 -(void)loadAddress:(NSString *)mystring{
-    NSURL *myurl = [NSURL URLWithString:mystring];
-    NSString *address= self.addressBar.text;
+        NSURL *myurl = [NSURL URLWithString:mystring];
+    NSString *address=self.addressBar.text;
     myurl = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@", address]];
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:myurl];
@@ -94,28 +108,33 @@
 -(BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
 
     if (navigationType==UIWebViewNavigationTypeLinkClicked) {
+       
         NSURL *URL=[request URL];
         if ([URL scheme] ) {
             self.addressBar.text=URL.absoluteString;
-            [self addressEntered:nil];
+            self.searchBar.text=NULL;
+
             [self.webView loadRequest:request];
-        }
+                    }
         return NO;
     }
     return YES;
+    
 }
 
 
 
 
 -(IBAction)addressEntered:(UITextField *)sender {
+    
+    
     [self loadAddress:self.addressBar.text];
+    self.addressBar.text=[NSString stringWithFormat:@"http://www.%@",self.addressBar.text];
      [sender resignFirstResponder];
     self.searchBar.text =NULL;
 
     [self checkConnection ];
-    historyViewController *vc=[[historyViewController alloc]init];
-    [vc.histories addObject:self.addressBar.text];
+    
     
     
         
