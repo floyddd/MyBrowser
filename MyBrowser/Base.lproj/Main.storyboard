@@ -99,6 +99,7 @@
                         <outlet property="addButton" destination="A5v-Qa-LNX" id="kUr-u1-74F"/>
                         <outlet property="addressBar" destination="RGt-cH-UEP" id="8VD-8b-bCR"/>
                         <outlet property="goBackButton" destination="Nua-Za-qon" id="bcf-lu-IG3"/>
+                        <outlet property="goForwardButton" destination="QZE-8D-WYk" id="lXs-DH-xRZ"/>
                         <outlet property="noConnectionLabel" destination="4mG-Al-dbG" id="AWD-9V-pck"/>
                         <outlet property="searchBar" destination="hjN-aj-Uxi" id="1hP-bl-mgv"/>
                         <outlet property="webView" destination="pkg-0D-LZb" id="pfr-iD-sLG"/>
@@ -149,7 +150,7 @@
                                 <rect key="frame" x="9" y="25" width="304" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -175,6 +176,7 @@
                                 <rect key="frame" x="127" y="25" width="55" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hiQ-hl-zZ5">

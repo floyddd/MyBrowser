@@ -15,50 +15,84 @@
 
 @implementation myViewController
 
+- (void)addItemViewController:(bookmarkViewController *)controller didFinishEnteringItem:(NSString *)item{
+    
+    
+    
+    
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+
+   
+    
+}
+
+
+
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    if (self.checkConnection==YES) {
+    [super viewDidLoad];if (self.checkConnection==YES) {
         self.noConnectionLabel.hidden=YES;
     }
+    
  self.addButton.enabled=NO;
     
 }
--(void)textFieldDidEndEditing:(UITextField *)textField
+-(void)textFieldDidEndEditing :(UITextField *)textField
 {
-    self.addButton.enabled=YES;
-    AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSMutableArray *a=historydelegate.historyArray;
-    [a addObject:self.addressBar.text];
-   }
+    
+    if (textField.text){
+        if (textField==self.searchBar){
+            self.addButton.enabled=YES;
+            AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+            NSMutableArray *a=historydelegate.historyArray;
+            NSString *b=[NSString stringWithFormat:@"google.com/search?q=%@",textField.text] ;
+            [a addObject:b];
+        
+        } else if (textField==self.addressBar){
+        self.addButton.enabled=YES;
+        AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+        NSMutableArray *a=historydelegate.historyArray;
+        NSString *b=self.addressBar.text;
+        [a addObject:b];
+        }}
+}
+
+
+   
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)googleEntered:(UITextField *)sender {
 
+
+- (IBAction)googleEntered:(UITextField *)sender {
+  
     [self loadWebPageFromString:self.searchBar.text];
-    [sender resignFirstResponder];
- self.addressBar.text=[NSString stringWithFormat: @"google.com/search?q=%@",self.searchBar.text] ;
-    AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSMutableArray *a=historydelegate.historyArray;
-    [a addObject:self.addressBar.text];
+     self.addressBar.text=[NSString stringWithFormat: @"google.com/search?q=%@",self.searchBar.text] ;
+    [self textFieldDidEndEditing:self.searchBar];
         self.addButton.enabled=YES;
    if (!self.checkConnection){
+       
         self.noConnectionLabel.hidden=NO;
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
    } else self.noConnectionLabel.hidden=YES;
 }
 
 - (IBAction)goBack:(id)sender {
-    [self.webView goBack];
-        self.searchBar.text=NULL;
-       }
+    
+        [self.webView goBack];
+    self.searchBar.text=NULL;
+}
 
 - (IBAction)goForward:(id)sender {
     [self.webView goForward];
-    
+    self.searchBar.text=NULL;
+   
 }
 
 - (IBAction)refreshWebView:(id)sender {
@@ -113,12 +147,15 @@
 
 
 -(BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    
+  
+  
+
     if (navigationType==UIWebViewNavigationTypeLinkClicked) {
+        
+        NSURL *URL=[request URL];
         AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
         NSMutableArray *a=historydelegate.historyArray;
-        [a addObject:self.addressBar.text];
-        NSURL *URL=[request URL];
+        [a addObject:URL.absoluteString];
         if ([URL scheme] ) {
             
             self.addressBar.text=URL.absoluteString;
@@ -139,7 +176,7 @@
     
     
     [self loadAddress:self.addressBar.text];
-    /*self.addressBar.text=[NSString stringWithFormat:@"http://www.%@",self.addressBar.text];*/
+   
     [sender resignFirstResponder];
     self.searchBar.text =NULL;
   if (!self.checkConnection){

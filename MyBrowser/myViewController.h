@@ -5,18 +5,13 @@
 //  Created by MokshaX on 3/10/14.
 //  Copyright (c) 2014 MokshaX. All rights reserved.
 //
-@class myViewController;
-@protocol passTextfield <NSObject>
 
-- (void)addItemViewController:(myViewController *)controller didFinishEnteringItem:(NSString *)item;
-
-@end
 #import "bookmarkViewController.h"
 #import <UIKit/UIKit.h>
 #import "historyViewController.h"
 #import "AppDelegate.h"
 
-@interface myViewController : UIViewController <UITextFieldDelegate,UIAlertViewDelegate>
+@interface myViewController : UIViewController <UITextFieldDelegate,UIAlertViewDelegate,passTextfield>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 
 
@@ -28,7 +23,8 @@
 - (IBAction)goForward:(id)sender;
 - (IBAction)refreshWebView:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *goBackButton;
-
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *goForwardButton;
+-(void)textFieldDidEndEditing:(UITextField *)textField;
 @property (nonatomic, weak) id <passTextfield> delegate;
 
 -(BOOL)checkConnection;
