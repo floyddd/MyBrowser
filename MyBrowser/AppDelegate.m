@@ -14,7 +14,24 @@
 {
     _bookmarksArray = [[NSMutableArray alloc]initWithObjects:@"www.facebook.com",@"www.twitter.com",nil];
     _historyArray = [[NSMutableArray alloc] init];
+    NSString *myPath = [self saveFilePath];
+    NSMutableArray *c=_bookmarksArray;
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    NSData *bookmarks = [defaults objectForKey:@"bookmarksArray"];
+    if (bookmarks) {
+        c = [[NSMutableArray alloc] initWithArray:[NSKeyedUnarchiver unarchiveObjectWithData:bookmarks]];
+        
+    }
     
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:myPath];
+    if (fileExists)
+	{
+    NSMutableArray *b = [[NSMutableArray alloc] initWithContentsOfFile:myPath];
+    _bookmarksArray=b;
+        
+       
+    }
+
     return YES;
 }
 							
