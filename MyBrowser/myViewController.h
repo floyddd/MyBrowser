@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "historyViewController.h"
 #import "AppDelegate.h"
+#import "Reachability.h"
 
 @interface myViewController : UIViewController <UITextFieldDelegate,UIAlertViewDelegate,passTextfield>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
@@ -27,7 +28,7 @@
 -(void)textFieldDidEndEditing:(UITextField *)textField;
 @property (nonatomic, weak) id <passTextfield> delegate;
 
--(BOOL)checkConnection;
+
 
 - (void) loadWebPageFromString:(NSString *)string;
 

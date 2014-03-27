@@ -23,6 +23,8 @@
 		35AA38B518CDF1B200ABF2E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AA389718CDF1B200ABF2E4 /* UIKit.framework */; };
 		35AA38BD18CDF1B200ABF2E4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 35AA38BB18CDF1B200ABF2E4 /* InfoPlist.strings */; };
 		35AA38BF18CDF1B200ABF2E4 /* MyBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 35AA38BE18CDF1B200ABF2E4 /* MyBrowserTests.m */; };
+		35C43D3318E41A130046DF7D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C43D3218E41A130046DF7D /* Reachability.m */; };
+		35C43D3518E41A400046DF7D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C43D3418E41A400046DF7D /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,9 @@
 		35AA38BA18CDF1B200ABF2E4 /* MyBrowserTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyBrowserTests-Info.plist"; sourceTree = "<group>"; };
 		35AA38BC18CDF1B200ABF2E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		35AA38BE18CDF1B200ABF2E4 /* MyBrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBrowserTests.m; sourceTree = "<group>"; };
+		35C43D3118E41A130046DF7D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		35C43D3218E41A130046DF7D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		35C43D3418E41A400046DF7D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35C43D3518E41A400046DF7D /* SystemConfiguration.framework in Frameworks */,
 				35AA389618CDF1B200ABF2E4 /* CoreGraphics.framework in Frameworks */,
 				35AA389818CDF1B200ABF2E4 /* UIKit.framework in Frameworks */,
 				35AA389418CDF1B200ABF2E4 /* Foundation.framework in Frameworks */,
@@ -107,6 +113,7 @@
 		35AA389218CDF1B200ABF2E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				35C43D3418E41A400046DF7D /* SystemConfiguration.framework */,
 				35AA389318CDF1B200ABF2E4 /* Foundation.framework */,
 				35AA389518CDF1B200ABF2E4 /* CoreGraphics.framework */,
 				35AA389718CDF1B200ABF2E4 /* UIKit.framework */,
@@ -127,6 +134,8 @@
 				3575393C18D5AD9300B96750 /* bookmarkViewController.m */,
 				35AA38A818CDF1B200ABF2E4 /* myViewController.h */,
 				35AA38A918CDF1B200ABF2E4 /* myViewController.m */,
+				35C43D3118E41A130046DF7D /* Reachability.h */,
+				35C43D3218E41A130046DF7D /* Reachability.m */,
 				35AA38AB18CDF1B200ABF2E4 /* Images.xcassets */,
 				35AA389A18CDF1B200ABF2E4 /* Supporting Files */,
 			);
@@ -263,6 +272,7 @@
 				3510329318E096E10047BA1D /* historyViewController.m in Sources */,
 				35AA38AA18CDF1B200ABF2E4 /* myViewController.m in Sources */,
 				35AA38A418CDF1B200ABF2E4 /* AppDelegate.m in Sources */,
+				35C43D3318E41A130046DF7D /* Reachability.m in Sources */,
 				35AA38A018CDF1B200ABF2E4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,6 +15,36 @@
 
 @implementation myViewController
 
+- (void)checkForWIFIConnection {
+    Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
+    
+    NetworkStatus netStatus = [wifiReach currentReachabilityStatus];
+    
+    if (netStatus!=ReachableViaWiFi)
+    {
+        self.noConnectionLabel.hidden=NO;
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+    } else
+    {self.noConnectionLabel.hidden=YES;
+    }
+}
+- (void)checkForWanConnection{
+    Reachability* wanReach = [Reachability reachabilityForLocalWiFi];
+    
+    NetworkStatus netStatus = [wanReach currentReachabilityStatus];
+    
+    if (netStatus!=ReachableViaWWAN)
+    {
+        self.noConnectionLabel.hidden=NO;
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+    } else
+    {self.noConnectionLabel.hidden=YES;
+    
+    }
+
+}
+
+
 - (void)addItemViewController:(bookmarkViewController *)controller didFinishEnteringItem:(NSString *)item{
     
     
@@ -34,13 +64,14 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];if (self.checkConnection==YES) {
-        self.noConnectionLabel.hidden=YES;
-    }
-    
- self.addButton.enabled=NO;
-    
+    [super viewDidLoad];
+    self.addButton.enabled=NO;
+
+    [self checkForWIFIConnection];
 }
+
+
+
 -(void)textFieldDidEndEditing :(UITextField *)textField
 {
     
@@ -71,45 +102,36 @@
 
 
 - (IBAction)googleEntered:(UITextField *)sender {
-  
+    [self checkForWIFIConnection];
     [self loadWebPageFromString:self.searchBar.text];
      self.addressBar.text=[NSString stringWithFormat: @"google.com/search?q=%@",self.searchBar.text] ;
     [self textFieldDidEndEditing:self.searchBar];
         self.addButton.enabled=YES;
-   if (!self.checkConnection){
+   
        
-        self.noConnectionLabel.hidden=NO;
-        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
-   } else self.noConnectionLabel.hidden=YES;
+    
 }
 
 - (IBAction)goBack:(id)sender {
-    
+    [self checkForWIFIConnection];
         [self.webView goBack];
     self.searchBar.text=NULL;
 }
 
 - (IBAction)goForward:(id)sender {
+    [self checkForWIFIConnection];
     [self.webView goForward];
     self.searchBar.text=NULL;
    
 }
 
 - (IBAction)refreshWebView:(id)sender {
+    [self checkForWIFIConnection];
     [self.webView reload];
     
 }
 
--(BOOL)checkConnection{
-    NSURL *scriptUrl = [NSURL URLWithString:@"http://google.com"];
-    NSData *data = [NSData dataWithContentsOfURL:scriptUrl];
-    if (!data)
-    {
- 
-        return NO;
-    }
- return YES;
-}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
@@ -174,16 +196,11 @@
 
 -(IBAction)addressEntered:(UITextField *)sender {
     
-    
+    [self checkForWIFIConnection];
     [self loadAddress:self.addressBar.text];
    
     [sender resignFirstResponder];
     self.searchBar.text =NULL;
-  if (!self.checkConnection){
-        self.noConnectionLabel.hidden=NO;
-        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
-    }
-    else self.noConnectionLabel.hidden=YES;
     
     
         
