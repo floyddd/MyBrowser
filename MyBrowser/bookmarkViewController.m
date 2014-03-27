@@ -13,6 +13,22 @@
 @end
 
 @implementation bookmarkViewController
+- (NSString *) saveFilePath
+{
+	NSArray *path =
+	NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+	return [[path objectAtIndex:0] stringByAppendingPathComponent:@"savefile.plist"];
+    
+}
+
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
+}
 
 
 
@@ -65,9 +81,34 @@
 }
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
     
+        AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSMutableArray *a=maindelegate.bookmarksArray;
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    NSData * bookmarks = [defaults objectForKey:@"bookmarks"];
+    if (bookmarks) {
+        a = [[NSMutableArray alloc] initWithArray:[NSKeyedUnarchiver unarchiveObjectWithData:bookmarks]];
+    } else {
+        a = [[NSMutableArray alloc] initWithCapacity:1];
+    }
     [self.tableView reloadData];
+    NSString *myPath = [self saveFilePath];
+    
+	BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:myPath];
+    
+	if (fileExists)
+	{
+        
+		a = [[NSMutableArray alloc] initWithContentsOfFile:myPath];
+        maindelegate.bookmarksArray=a;
+        UIApplication *myApp = [UIApplication sharedApplication];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationDidEnterBackground:)
+                                                     name:UIApplicationDidEnterBackgroundNotification
+                                                   object:myApp];
+    }
+[super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning

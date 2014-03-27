@@ -15,6 +15,7 @@
 
 @implementation myViewController
 
+
 - (void)checkForWIFIConnection {
     Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
     
@@ -68,8 +69,7 @@
     self.addButton.enabled=NO;
     [self checkForWanConnection];
     [self checkForWIFIConnection];
-}
-
+    }
 
 
 -(void)textFieldDidEndEditing :(UITextField *)textField
@@ -146,8 +146,9 @@
             if ([self.addressBar.text length]!=0){
                 NSString *b=[NSString stringWithFormat:@"%@",self.addressBar.text];
                 [a addObject:b];
-            
-        
+                
+               
+                
             }}}
    
     - (void) loadWebPageFromString:(NSString *)string {

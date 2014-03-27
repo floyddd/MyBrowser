@@ -26,10 +26,20 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    
+    NSArray *values = [[NSArray alloc] initWithArray:self.bookmarksArray];
+	[values writeToFile:[self saveFilePath] atomically:YES];
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
-
+- (NSString *) saveFilePath
+{
+	NSArray *path =
+	NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+	return [[path objectAtIndex:0] stringByAppendingPathComponent:@"savefile.plist"];
+    
+}
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
