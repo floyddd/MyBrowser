@@ -54,12 +54,6 @@
     
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-
-   
-    
-}
 
 
 
@@ -184,13 +178,14 @@
   
 
     if (navigationType==UIWebViewNavigationTypeLinkClicked) {
-        [self checkForWanConnection];
         
-        [self checkForWIFIConnection];
         NSURL *URL=[request URL];
         AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
         NSMutableArray *a=historydelegate.historyArray;
         [a addObject:URL.absoluteString];
+        [self checkForWanConnection];
+        
+        [self checkForWIFIConnection];
         if ([URL scheme] ) {
             
             self.addressBar.text=URL.absoluteString;

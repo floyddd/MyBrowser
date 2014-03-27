@@ -55,8 +55,8 @@
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-   
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+    
+        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
@@ -75,7 +75,7 @@
 	NSArray *path =
 	NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
-	return [[path objectAtIndex:0] stringByAppendingPathComponent:@"bookmarks.plist"];
+	return [[path objectAtIndex:0] stringByAppendingPathComponent:@"bookmarked.plist"];
     
 }
 - (NSString *) saveHistory
@@ -83,7 +83,7 @@
 	NSArray *historyPath =
 	NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
-	return [[historyPath objectAtIndex:0] stringByAppendingPathComponent:@"histores.plist"];
+	return [[historyPath objectAtIndex:0] stringByAppendingPathComponent:@"history.plist"];
     
 }
 
@@ -100,6 +100,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    
          // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

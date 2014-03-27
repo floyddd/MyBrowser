@@ -25,8 +25,6 @@
 		35AA38BF18CDF1B200ABF2E4 /* MyBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 35AA38BE18CDF1B200ABF2E4 /* MyBrowserTests.m */; };
 		35C43D3318E41A130046DF7D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C43D3218E41A130046DF7D /* Reachability.m */; };
 		35C43D3518E41A400046DF7D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C43D3418E41A400046DF7D /* SystemConfiguration.framework */; };
-		35C43D3B18E476FF0046DF7D /* histores.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35C43D3A18E476FF0046DF7D /* histores.plist */; };
-		35C43D3D18E477070046DF7D /* bookmarks.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35C43D3C18E477070046DF7D /* bookmarks.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,8 +64,6 @@
 		35C43D3118E41A130046DF7D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		35C43D3218E41A130046DF7D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		35C43D3418E41A400046DF7D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		35C43D3A18E476FF0046DF7D /* histores.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = histores.plist; sourceTree = "<group>"; };
-		35C43D3C18E477070046DF7D /* bookmarks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bookmarks.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,8 +145,6 @@
 		35AA389A18CDF1B200ABF2E4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				35C43D3A18E476FF0046DF7D /* histores.plist */,
-				35C43D3C18E477070046DF7D /* bookmarks.plist */,
 				35AA389B18CDF1B200ABF2E4 /* MyBrowser-Info.plist */,
 				35AA389C18CDF1B200ABF2E4 /* InfoPlist.strings */,
 				35AA389F18CDF1B200ABF2E4 /* main.m */,
@@ -253,9 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35C43D3D18E477070046DF7D /* bookmarks.plist in Resources */,
 				35AA38AC18CDF1B200ABF2E4 /* Images.xcassets in Resources */,
-				35C43D3B18E476FF0046DF7D /* histores.plist in Resources */,
 				35AA389E18CDF1B200ABF2E4 /* InfoPlist.strings in Resources */,
 				35AA38A718CDF1B200ABF2E4 /* Main.storyboard in Resources */,
 			);
