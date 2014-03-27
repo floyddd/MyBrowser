@@ -32,6 +32,24 @@
    
     }
 
+    NSString *historypath = [self saveHistory];
+    
+    NSUserDefaults * defaultsHistory = [NSUserDefaults standardUserDefaults];
+    NSData *histories = [defaultsHistory objectForKey:@"historiesArray"];
+    if (histories) {
+        NSMutableArray   *q= [NSKeyedUnarchiver unarchiveObjectWithData:bookmarks];
+        [_historyArray addObjectsFromArray:q];
+    }
+    
+    BOOL historyfileExists = [[NSFileManager defaultManager] fileExistsAtPath:historypath];
+    if (historyfileExists)
+	{
+        NSMutableArray *b = [[NSMutableArray alloc] initWithContentsOfFile:historypath];
+        _historyArray =b;
+        
+    }
+
+    
     return YES;
 }
 							
@@ -44,9 +62,11 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-  NSLog(@"enter background");
-    NSArray *values = [[NSArray alloc] initWithArray:self.bookmarksArray];
-	[values writeToFile:[self saveFilePath] atomically:YES];
+  
+    NSArray *bookmarksValues = [[NSArray alloc] initWithArray:self.bookmarksArray];
+	[bookmarksValues writeToFile:[self saveFilePath] atomically:YES];
+    NSArray *historyValues = [[NSArray alloc] initWithArray:self.historyArray];
+	[historyValues writeToFile:[self saveHistory] atomically:YES];
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
@@ -58,6 +78,15 @@
 	return [[path objectAtIndex:0] stringByAppendingPathComponent:@"bookmarks.plist"];
     
 }
+- (NSString *) saveHistory
+{
+	NSArray *historyPath =
+	NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+	return [[historyPath objectAtIndex:0] stringByAppendingPathComponent:@"histores.plist"];
+    
+}
+
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     
