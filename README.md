@@ -7,5 +7,7 @@ Features:
 - Adding Bookmark
 - Save history of URLs.
 
+License
+-----------
 
 
