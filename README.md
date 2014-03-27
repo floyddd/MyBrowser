@@ -6,7 +6,7 @@ Features:
 - Reload page
 - Adding Bookmark
 - Save history of URLs.
--Save bookmark and history data.
+- Save bookmark and history data after app quits.
 
 Third party Frameworks
 -----------------------
