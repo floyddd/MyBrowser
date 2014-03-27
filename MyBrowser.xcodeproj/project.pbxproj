@@ -125,11 +125,11 @@
 		35AA389918CDF1B200ABF2E4 /* MyBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				3510329118E096E10047BA1D /* historyViewController.h */,
-				3510329218E096E10047BA1D /* historyViewController.m */,
 				35AA38A218CDF1B200ABF2E4 /* AppDelegate.h */,
 				35AA38A318CDF1B200ABF2E4 /* AppDelegate.m */,
 				35AA38A518CDF1B200ABF2E4 /* Main.storyboard */,
+				3510329118E096E10047BA1D /* historyViewController.h */,
+				3510329218E096E10047BA1D /* historyViewController.m */,
 				3575393B18D5AD9300B96750 /* bookmarkViewController.h */,
 				3575393C18D5AD9300B96750 /* bookmarkViewController.m */,
 				35AA38A818CDF1B200ABF2E4 /* myViewController.h */,

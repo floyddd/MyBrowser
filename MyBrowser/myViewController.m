@@ -16,34 +16,51 @@
 @implementation myViewController
 
 
+-(void)loadView
+{
+    
+
+    [super loadView];
+    _goBackButton.enabled = NO;
+	
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webview
+{
+    if ([_webView canGoBack]) {
+        _goBackButton.enabled=YES;
+        
+    } else _goBackButton.enabled=NO;
+    
+    if ([_webView canGoForward]) {
+        _goForwardButton.enabled=YES;
+        
+    } else _goForwardButton.enabled=NO;
+
+    
+}
+
 - (void)checkForWIFIConnection {
     Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
     
     NetworkStatus netStatus = [wifiReach currentReachabilityStatus];
-    
-    if (netStatus!=ReachableViaWiFi)
-    {
-        self.noConnectionLabel.hidden=NO;
-        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
-    } else
-    {self.noConnectionLabel.hidden=YES;
-    }
-}
-- (void)checkForWanConnection{
     Reachability* wanReach = [Reachability reachabilityForInternetConnection];
     
     NetworkStatus netStat = [wanReach currentReachabilityStatus];
-    
-    if (netStat!=ReachableViaWWAN)
+    if (netStatus!=ReachableViaWiFi && netStat!=ReachableViaWWAN)
     {
-        self.noConnectionLabel.hidden=NO;
-        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
-    } else
-    {self.noConnectionLabel.hidden=YES;
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection"
+                                                        message:@"Your device is not connected to internet."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+
+        
     
     }
-
 }
+
 
 
 - (void)addItemViewController:(bookmarkViewController *)controller didFinishEnteringItem:(NSString *)item{
@@ -59,10 +76,13 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    
     self.addButton.enabled=NO;
-    [self checkForWanConnection];
+    self.goBackButton.enabled=NO;
+    self.goForwardButton.enabled=NO;
     [self checkForWIFIConnection];
+    
+    [super viewDidLoad];
     }
 
 
@@ -108,9 +128,10 @@
     
 }
 
+
 - (IBAction)goBack:(id)sender {
-    
-        [self.webView goBack];
+    [self.webView goBack];
+   
     self.searchBar.text=NULL;
     self.addressBar.text=NULL;
 }
@@ -148,7 +169,7 @@
     - (void) loadWebPageFromString:(NSString *)string {
     NSURL *url = [NSURL URLWithString:string];
     
-        [self checkForWanConnection];
+      
         
         [self checkForWIFIConnection];
     
@@ -160,9 +181,7 @@
 
 
 -(void)loadAddress:(NSString *)mystring{
-    [self checkForWanConnection];
-    
-    [self checkForWIFIConnection];
+       [self checkForWIFIConnection];
         NSURL *myurl = [NSURL URLWithString:mystring];
     NSString *address=self.addressBar.text;
     myurl = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@", address]];
@@ -183,9 +202,7 @@
         AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
         NSMutableArray *a=historydelegate.historyArray;
         [a addObject:URL.absoluteString];
-        [self checkForWanConnection];
-        
-        [self checkForWIFIConnection];
+                [self checkForWIFIConnection];
         if ([URL scheme] ) {
             
             self.addressBar.text=URL.absoluteString;

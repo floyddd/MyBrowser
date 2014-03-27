@@ -13,6 +13,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
+    
     _bookmarksArray = [[NSMutableArray alloc]initWithObjects:@"www.facebook.com",@"www.twitter.com",nil];
     _historyArray = [[NSMutableArray alloc] init];
     NSString *myPath = [self saveFilePath];

@@ -85,13 +85,6 @@
                                 </items>
                                 <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your device is not connected to internet" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="2" baselineAdjustment="none" adjustsFontSizeToFit="NO" id="4mG-Al-dbG">
-                                <rect key="frame" x="62" y="201" width="199" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -100,7 +93,6 @@
                         <outlet property="addressBar" destination="RGt-cH-UEP" id="8VD-8b-bCR"/>
                         <outlet property="goBackButton" destination="Nua-Za-qon" id="bcf-lu-IG3"/>
                         <outlet property="goForwardButton" destination="QZE-8D-WYk" id="lXs-DH-xRZ"/>
-                        <outlet property="noConnectionLabel" destination="4mG-Al-dbG" id="AWD-9V-pck"/>
                         <outlet property="searchBar" destination="hjN-aj-Uxi" id="1hP-bl-mgv"/>
                         <outlet property="webView" destination="pkg-0D-LZb" id="pfr-iD-sLG"/>
                     </connections>
@@ -162,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqz-IM-V9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="683" y="-1"/>
+            <point key="canvasLocation" x="619" y="-20"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="kcB-38-Mtk">
@@ -214,7 +206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cRM-pB-lZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1155" y="11"/>
+            <point key="canvasLocation" x="973" y="-28"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
