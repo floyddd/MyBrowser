@@ -8,7 +8,7 @@ Features:
 - Save history of URLs.
 - Save bookmark and history data after app quits.
 
-![alt tag](http://i57.tinypic.com/10n6q34.jpg)
+             ![alt tag](http://i61.tinypic.com/2z8wbkk.png)
 
 
 Third party Frameworks
