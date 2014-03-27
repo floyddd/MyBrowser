@@ -12,24 +12,23 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSLog(@"launching with options");
+    
     _bookmarksArray = [[NSMutableArray alloc]initWithObjects:@"www.facebook.com",@"www.twitter.com",nil];
     _historyArray = [[NSMutableArray alloc] init];
     NSString *myPath = [self saveFilePath];
-    NSMutableArray *c=_bookmarksArray;
+
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     NSData *bookmarks = [defaults objectForKey:@"bookmarksArray"];
     if (bookmarks) {
-        c = [[NSMutableArray alloc] initWithArray:[NSKeyedUnarchiver unarchiveObjectWithData:bookmarks]];
-        
+     NSMutableArray   *w= [NSKeyedUnarchiver unarchiveObjectWithData:bookmarks];
+        [_bookmarksArray addObjectsFromArray:w];
     }
     
     BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:myPath];
     if (fileExists)
 	{
     NSMutableArray *b = [[NSMutableArray alloc] initWithContentsOfFile:myPath];
-    _bookmarksArray=b;
-        
+        _bookmarksArray =b;
    
     }
 
@@ -56,7 +55,7 @@
 	NSArray *path =
 	NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
-	return [[path objectAtIndex:0] stringByAppendingPathComponent:@"savefile.plist"];
+	return [[path objectAtIndex:0] stringByAppendingPathComponent:@"bookmarks.plist"];
     
 }
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -72,10 +71,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-     NSLog(@"terminate");
-    NSArray *values = [[NSArray alloc] initWithArray:self.bookmarksArray];
-	[values writeToFile:[self saveFilePath] atomically:YES];
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
 @end
