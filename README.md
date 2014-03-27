@@ -8,6 +8,9 @@ Features:
 - Save history of URLs.
 - Save bookmark and history data after app quits.
 
+![alt tag](http://tinypic.com/r/23seu6v/8)
+
+
 Third party Frameworks
 -----------------------
 - Apple's Reachability
