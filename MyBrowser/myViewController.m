@@ -29,11 +29,11 @@
     }
 }
 - (void)checkForWanConnection{
-    Reachability* wanReach = [Reachability reachabilityForLocalWiFi];
+    Reachability* wanReach = [Reachability reachabilityForInternetConnection];
     
-    NetworkStatus netStatus = [wanReach currentReachabilityStatus];
+    NetworkStatus netStat = [wanReach currentReachabilityStatus];
     
-    if (netStatus!=ReachableViaWWAN)
+    if (netStat!=ReachableViaWWAN)
     {
         self.noConnectionLabel.hidden=NO;
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
@@ -66,7 +66,7 @@
 {
     [super viewDidLoad];
     self.addButton.enabled=NO;
-
+    [self checkForWanConnection];
     [self checkForWIFIConnection];
 }
 
@@ -75,7 +75,9 @@
 -(void)textFieldDidEndEditing :(UITextField *)textField
 {
     
+    
     if (textField.text){
+        
         if (textField==self.searchBar){
             self.addButton.enabled=YES;
             AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
@@ -102,8 +104,8 @@
 
 
 - (IBAction)googleEntered:(UITextField *)sender {
-    [self checkForWIFIConnection];
-    [self loadWebPageFromString:self.searchBar.text];
+   
+        [self loadWebPageFromString:self.searchBar.text];
      self.addressBar.text=[NSString stringWithFormat: @"google.com/search?q=%@",self.searchBar.text] ;
     [self textFieldDidEndEditing:self.searchBar];
         self.addButton.enabled=YES;
@@ -113,21 +115,24 @@
 }
 
 - (IBAction)goBack:(id)sender {
-    [self checkForWIFIConnection];
+    
         [self.webView goBack];
     self.searchBar.text=NULL;
+    self.addressBar.text=NULL;
 }
 
 - (IBAction)goForward:(id)sender {
-    [self checkForWIFIConnection];
-    [self.webView goForward];
+        [self.webView goForward];
     self.searchBar.text=NULL;
    
 }
 
 - (IBAction)refreshWebView:(id)sender {
-    [self checkForWIFIConnection];
     [self.webView reload];
+
+    
+    [self checkForWIFIConnection];
+    
     
 }
 
@@ -148,7 +153,9 @@
     - (void) loadWebPageFromString:(NSString *)string {
     NSURL *url = [NSURL URLWithString:string];
     
-  
+        [self checkForWanConnection];
+        
+        [self checkForWIFIConnection];
     
         NSString *googleSearch = [string stringByReplacingOccurrencesOfString:@" " withString:@"+"];
         url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.google.com/search?q=%@", googleSearch]];
@@ -158,6 +165,9 @@
 
 
 -(void)loadAddress:(NSString *)mystring{
+    [self checkForWanConnection];
+    
+    [self checkForWIFIConnection];
         NSURL *myurl = [NSURL URLWithString:mystring];
     NSString *address=self.addressBar.text;
     myurl = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@", address]];
@@ -173,7 +183,9 @@
   
 
     if (navigationType==UIWebViewNavigationTypeLinkClicked) {
+        [self checkForWanConnection];
         
+        [self checkForWIFIConnection];
         NSURL *URL=[request URL];
         AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
         NSMutableArray *a=historydelegate.historyArray;
@@ -196,7 +208,6 @@
 
 -(IBAction)addressEntered:(UITextField *)sender {
     
-    [self checkForWIFIConnection];
     [self loadAddress:self.addressBar.text];
    
     [sender resignFirstResponder];
