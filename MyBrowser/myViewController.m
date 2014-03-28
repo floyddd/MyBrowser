@@ -102,12 +102,20 @@
             [a addObject:b];
         
         } else if (textField==_addressBar){
-        
+            Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
+            
+            NetworkStatus netStatus = [wifiReach currentReachabilityStatus];
+            Reachability* wanReach = [Reachability reachabilityForInternetConnection];
+            
+            NetworkStatus netStat = [wanReach currentReachabilityStatus];
+            if (netStatus==ReachableViaWiFi && netStat==ReachableViaWWAN)
+            {
+
         AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
         NSMutableArray *a=historydelegate.historyArray;
         NSString *b=_addressBar.text;
         [a addObject:b];
-        }}
+            }}}
 }
 
 
@@ -133,7 +141,7 @@
         [self loadWebPageFromString:_searchBar.text];
         [self textFieldDidEndEditing:_searchBar];
         _addressBar.text=[NSString stringWithFormat: @"google.com/search?q=%@",_searchBar.text] ;
-    }else [self checkForWIFIConnection];
+    }else {[self checkForWIFIConnection];self.addressBar.text=NULL;}
        
     
 }
@@ -209,9 +217,7 @@
     if (navigationType==UIWebViewNavigationTypeLinkClicked) {
         
         NSURL *URL=[request URL];
-        AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-        NSMutableArray *a=historydelegate.historyArray;
-        [a addObject:URL.absoluteString];
+        
                 [self checkForWIFIConnection];
         if ([URL scheme] ) {
             Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
@@ -224,6 +230,9 @@
                 _addressBar.text=URL.absoluteString;
                 _searchBar.text=NULL;
                 [_webView loadRequest:request];
+                AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+                NSMutableArray *a=historydelegate.historyArray;
+                [a addObject:URL.absoluteString];
             }
 
             
