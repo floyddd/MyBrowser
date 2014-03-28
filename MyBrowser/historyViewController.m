@@ -68,4 +68,10 @@
 - (IBAction)goBack:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (IBAction)clearHistory:(UIButton *)sender {
+    AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    historydelegate.historyArray=NULL;
+    
+}
 @end

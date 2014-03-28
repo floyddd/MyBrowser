@@ -40,8 +40,8 @@
     
     // Configure the cell...
     AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSMutableArray *a=maindelegate.bookmarksArray;
-    cell.textLabel.text = [a objectAtIndex:indexPath.row];
+    NSMutableArray *a=[maindelegate bookmarksArray];
+    cell.textLabel.text = [a objectAtIndex:[indexPath row]];
     return cell;
    
     
@@ -49,7 +49,7 @@
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row==0) {
+    if ([indexPath row]==0) {
         
     }
 }
@@ -59,7 +59,7 @@
 {
     // Return the number of rows in the section.
     AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSMutableArray *a=maindelegate.bookmarksArray;
+    NSMutableArray *a=[maindelegate bookmarksArray];
     return [a count];
 }
 
@@ -70,7 +70,7 @@
     
 
    [super viewDidLoad];
-    [self.tableView reloadData];
+    [[self tableView] reloadData];
 
 }
 

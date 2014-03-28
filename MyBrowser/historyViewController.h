@@ -10,5 +10,6 @@
 #import "AppDelegate.h"
 @interface historyViewController : UIViewController
 - (IBAction)goBack:(id)sender;
+- (IBAction)clearHistory:(UIButton *)sender;
 
 @end

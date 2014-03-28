@@ -24,6 +24,7 @@
 - (IBAction)refreshWebView:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *goBackButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *goForwardButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 -(void)textFieldDidEndEditing:(UITextField *)textField;
 @property (nonatomic, weak) id <passTextfield> delegate;
 
