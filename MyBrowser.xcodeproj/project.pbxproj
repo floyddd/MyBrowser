@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3510329318E096E10047BA1D /* historyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3510329218E096E10047BA1D /* historyViewController.m */; };
-		3527B5E418E5B562004C5740 /* bookmark.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3527B5E318E5B562004C5740 /* bookmark.plist */; };
-		3527B5E618E5B56C004C5740 /* history.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3527B5E518E5B56C004C5740 /* history.plist */; };
 		3575393D18D5AD9300B96750 /* bookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3575393C18D5AD9300B96750 /* bookmarkViewController.m */; };
 		35AA389418CDF1B200ABF2E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AA389318CDF1B200ABF2E4 /* Foundation.framework */; };
 		35AA389618CDF1B200ABF2E4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AA389518CDF1B200ABF2E4 /* CoreGraphics.framework */; };
@@ -42,8 +40,6 @@
 /* Begin PBXFileReference section */
 		3510329118E096E10047BA1D /* historyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = historyViewController.h; sourceTree = "<group>"; };
 		3510329218E096E10047BA1D /* historyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = historyViewController.m; sourceTree = "<group>"; };
-		3527B5E318E5B562004C5740 /* bookmark.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bookmark.plist; sourceTree = "<group>"; };
-		3527B5E518E5B56C004C5740 /* history.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = history.plist; sourceTree = "<group>"; };
 		3575393B18D5AD9300B96750 /* bookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bookmarkViewController.h; sourceTree = "<group>"; };
 		3575393C18D5AD9300B96750 /* bookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bookmarkViewController.m; sourceTree = "<group>"; };
 		35AA389018CDF1B200ABF2E4 /* MyBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,8 +145,6 @@
 		35AA389A18CDF1B200ABF2E4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3527B5E318E5B562004C5740 /* bookmark.plist */,
-				3527B5E518E5B56C004C5740 /* history.plist */,
 				35AA389B18CDF1B200ABF2E4 /* MyBrowser-Info.plist */,
 				35AA389C18CDF1B200ABF2E4 /* InfoPlist.strings */,
 				35AA389F18CDF1B200ABF2E4 /* main.m */,
@@ -253,10 +247,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3527B5E618E5B56C004C5740 /* history.plist in Resources */,
 				35AA38AC18CDF1B200ABF2E4 /* Images.xcassets in Resources */,
 				35AA389E18CDF1B200ABF2E4 /* InfoPlist.strings in Resources */,
-				3527B5E418E5B562004C5740 /* bookmark.plist in Resources */,
 				35AA38A718CDF1B200ABF2E4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

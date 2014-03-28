@@ -48,10 +48,8 @@
     Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
     
     NetworkStatus netStatus = [wifiReach currentReachabilityStatus];
-    Reachability* wanReach = [Reachability reachabilityForInternetConnection];
-    
-    NetworkStatus netStat = [wanReach currentReachabilityStatus];
-    if (netStatus!=ReachableViaWiFi && netStat!=ReachableViaWWAN)
+   
+    if (netStatus!=ReachableViaWiFi)
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection"
                                                         message:@"Your device is not connected to internet."
@@ -104,22 +102,7 @@
             NSString *b=[NSString stringWithFormat:@"http://www.google.com/search?q=%@",textField.text] ;
             [a addObject:b];
         
-        } else if (textField==_addressBar){
-            Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
-            
-            NetworkStatus netStatus = [wifiReach currentReachabilityStatus];
-            Reachability* wanReach = [Reachability reachabilityForInternetConnection];
-            
-            NetworkStatus netStat = [wanReach currentReachabilityStatus];
-            if (netStatus==ReachableViaWiFi && netStat==ReachableViaWWAN)
-            {
-
-        AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-        NSMutableArray *a=historydelegate.historyArray;
-        NSString *b=_addressBar.text;
-        [a addObject:b];
-            }}}
-}
+        }}}
 
 
    
@@ -136,11 +119,8 @@
     Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
     
     NetworkStatus netStatus = [wifiReach currentReachabilityStatus];
-    Reachability* wanReach = [Reachability reachabilityForInternetConnection];
     
-    NetworkStatus netStat = [wanReach currentReachabilityStatus];
-    
-    if (netStatus==ReachableViaWiFi || netStat==ReachableViaWWAN){
+    if (netStatus==ReachableViaWiFi){
         [self loadWebPageFromString:_searchBar.text];
         [self textFieldDidEndEditing:_searchBar];
         _addressBar.text=[NSString stringWithFormat: @"http://www.google.com/search?q=%@",_searchBar.text] ;
@@ -233,10 +213,8 @@
             Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
             
             NetworkStatus netStatus = [wifiReach currentReachabilityStatus];
-            Reachability* wanReach = [Reachability reachabilityForInternetConnection];
             
-            NetworkStatus netStat = [wanReach currentReachabilityStatus];
-            if (netStatus==ReachableViaWiFi || netStat==ReachableViaWWAN){
+            if (netStatus==ReachableViaWiFi ){
                 _addressBar.text=URL.absoluteString;
                 _searchBar.text=NULL;
                 [_webView loadRequest:request];
@@ -279,11 +257,9 @@
         Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
     
     NetworkStatus netStatus = [wifiReach currentReachabilityStatus];
-    Reachability* wanReach = [Reachability reachabilityForInternetConnection];
     
-    NetworkStatus netStat = [wanReach currentReachabilityStatus];
-    if (netStatus==ReachableViaWiFi || netStat==ReachableViaWWAN){
-        [self urlIsValid:_addressBar.text];
+    if (netStatus==ReachableViaWiFi && [self urlIsValid:_addressBar.text]){
+       
         
         
     [self loadAddress:_addressBar.text];

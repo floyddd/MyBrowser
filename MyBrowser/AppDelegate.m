@@ -76,7 +76,7 @@
 	NSArray *path =
 	NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
-	return [[path objectAtIndex:0] stringByAppendingPathComponent:@"bookmark.plist"];
+	return [[path objectAtIndex:0] stringByAppendingPathComponent:@"bookmarklist.plist"];
     
 }
 - (NSString *) saveHistory
@@ -84,7 +84,7 @@
 	NSArray *historyPath =
 	NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
-	return [[historyPath objectAtIndex:0] stringByAppendingPathComponent:@"history.plist"];
+	return [[historyPath objectAtIndex:0] stringByAppendingPathComponent:@"historylist.plist"];
     
 }
 
