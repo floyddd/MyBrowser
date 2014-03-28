@@ -14,9 +14,9 @@
 {
     
     
-    _bookmarksArray = [[NSMutableArray alloc]initWithObjects:@"www.facebook.com",@"www.twitter.com",nil];
+    _bookmarksArray = [[NSMutableArray alloc]initWithObjects:@"http://www.facebook.com",@"http://www.twitter.com",nil];
     _historyArray = [[NSMutableArray alloc] init];
-    NSString *myPath = [self saveFilePath];
+    NSString *myPath = [self saveBookmark];
 
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     NSData *bookmarks = [defaults objectForKey:@"bookmarksArray"];
@@ -65,18 +65,18 @@
 {
   
     NSArray *bookmarksValues = [[NSArray alloc] initWithArray:self.bookmarksArray];
-	[bookmarksValues writeToFile:[self saveFilePath] atomically:YES];
+	[bookmarksValues writeToFile:[self saveBookmark] atomically:YES];
     NSArray *historyValues = [[NSArray alloc] initWithArray:self.historyArray];
 	[historyValues writeToFile:[self saveHistory] atomically:YES];
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
-- (NSString *) saveFilePath
+- (NSString *) saveBookmark
 {
 	NSArray *path =
 	NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
-	return [[path objectAtIndex:0] stringByAppendingPathComponent:@"bookmarked.plist"];
+	return [[path objectAtIndex:0] stringByAppendingPathComponent:@"bookmark.plist"];
     
 }
 - (NSString *) saveHistory
@@ -96,13 +96,12 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    NSArray *historyValues = [[NSArray alloc] initWithArray:self.historyArray];
-	[historyValues writeToFile:[self saveHistory] atomically:YES];
+    
          // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

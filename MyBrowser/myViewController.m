@@ -27,6 +27,8 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webview
 {
+    
+   
     _addButton.enabled=YES;
     _refreshButton.enabled=YES;
     if ([_webView canGoBack]) {
@@ -98,7 +100,7 @@
             
             AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
             NSMutableArray *a=historydelegate.historyArray;
-            NSString *b=[NSString stringWithFormat:@"google.com/search?q=%@",textField.text] ;
+            NSString *b=[NSString stringWithFormat:@"http://www.google.com/search?q=%@",textField.text] ;
             [a addObject:b];
         
         } else if (textField==_addressBar){
@@ -140,7 +142,7 @@
     if (netStatus==ReachableViaWiFi || netStat==ReachableViaWWAN){
         [self loadWebPageFromString:_searchBar.text];
         [self textFieldDidEndEditing:_searchBar];
-        _addressBar.text=[NSString stringWithFormat: @"google.com/search?q=%@",_searchBar.text] ;
+        _addressBar.text=[NSString stringWithFormat: @"http://www.google.com/search?q=%@",_searchBar.text] ;
     }else {[self checkForWIFIConnection];self.addressBar.text=NULL;}
        
     
@@ -201,17 +203,24 @@
 -(void)loadAddress:(NSString *)mystring{
     
         NSURL *myurl = [NSURL URLWithString:mystring];
-   
+    if(!myurl.scheme){
     myurl = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@", mystring]];
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:myurl];
-    [_webView loadRequest:request];
+    [_webView loadRequest:request];}
+    else{
+        myurl = [NSURL URLWithString:[NSString stringWithFormat:@"%@", mystring]];
+        
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:myurl];
+        [_webView loadRequest:request];
+    
+    }
   
         }
 
 
 -(BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-  
+    
   
 
     if (navigationType==UIWebViewNavigationTypeLinkClicked) {
@@ -249,7 +258,7 @@
 
 
 -(IBAction)addressEntered:(UITextField *)sender {
-    Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
+        Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
     
     NetworkStatus netStatus = [wifiReach currentReachabilityStatus];
     Reachability* wanReach = [Reachability reachabilityForInternetConnection];
@@ -258,6 +267,11 @@
     if (netStatus==ReachableViaWiFi || netStat==ReachableViaWWAN){
         
     [self loadAddress:_addressBar.text];
+        AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+        NSMutableArray *a=historydelegate.historyArray;
+        
+        [a addObject:_addressBar.text];
+
     }else [self checkForWIFIConnection];
     [sender resignFirstResponder];
     _searchBar.text =NULL;
