@@ -11,5 +11,6 @@
 @interface historyViewController : UIViewController
 - (IBAction)goBack:(id)sender;
 - (IBAction)clearHistory:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

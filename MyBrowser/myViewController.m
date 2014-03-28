@@ -193,8 +193,8 @@
 -(void)loadAddress:(NSString *)mystring{
     
         NSURL *myurl = [NSURL URLWithString:mystring];
-    NSString *address=_addressBar.text;
-    myurl = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@", address]];
+   
+    myurl = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@", mystring]];
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:myurl];
     [_webView loadRequest:request];
@@ -247,6 +247,7 @@
     
     NetworkStatus netStat = [wanReach currentReachabilityStatus];
     if (netStatus==ReachableViaWiFi || netStat==ReachableViaWWAN){
+        
     [self loadAddress:_addressBar.text];
     }else [self checkForWIFIConnection];
     [sender resignFirstResponder];

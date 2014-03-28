@@ -71,7 +71,9 @@
 
 - (IBAction)clearHistory:(UIButton *)sender {
     AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    historydelegate.historyArray=NULL;
     
+    [historydelegate.historyArray removeAllObjects ];
+                       
+    [_tableView reloadData];
 }
 @end
