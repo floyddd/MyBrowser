@@ -80,6 +80,7 @@
 
 - (void)viewDidLoad
 {
+    
     _refreshButton.enabled=NO;
     _addButton.enabled=NO;
     [_goBackButton setEnabled:NO];
@@ -130,7 +131,7 @@
 
 
 - (IBAction)googleEntered:(UITextField *)sender {
-   
+    
     
     Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
     
@@ -254,8 +255,25 @@
     
 }
 
-
-
+- (BOOL) urlIsValid: (NSString *) url
+{
+    NSString *regex =
+    @"((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?";
+    /// OR use this
+    ///NSString *regex = "(http|ftp|https)://[\w-_]+(.[\w-_]+)+([\w-.,@?^=%&:/~+#]* [\w-\@?^=%&/~+#])?";
+    NSPredicate *regextest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    
+    if ([regextest evaluateWithObject: url] == NO) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid URL"
+                                                        message:@"Enter valid URL."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    
+    return [regextest evaluateWithObject:url];
+}
 
 -(IBAction)addressEntered:(UITextField *)sender {
         Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
@@ -265,6 +283,8 @@
     
     NetworkStatus netStat = [wanReach currentReachabilityStatus];
     if (netStatus==ReachableViaWiFi || netStat==ReachableViaWWAN){
+        [self urlIsValid:_addressBar.text];
+        
         
     [self loadAddress:_addressBar.text];
         AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
