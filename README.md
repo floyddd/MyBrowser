@@ -6,6 +6,7 @@ Features:
 
 - iOS7 support
 - Reload page
+- URL validation
 - Adding Bookmark
 - Save history of URLs.
 - Save bookmark and history data after app quits.
