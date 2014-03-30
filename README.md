@@ -10,6 +10,7 @@ Features:
 - Adding Bookmark
 - Save history of URLs.
 - Save bookmark and history data after app quits.
+- Check internet connection and display alert if no connection.
 
 
 ![alt tag](http://i61.tinypic.com/2z8wbkk.png)
