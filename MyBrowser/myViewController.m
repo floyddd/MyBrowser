@@ -16,6 +16,7 @@
 @implementation myViewController
 
 
+
 -(void)loadView
 {
     
@@ -65,13 +66,6 @@
 
 
 
-- (void)addItemViewController:(bookmarkViewController *)controller didFinishEnteringItem:(NSString *)item{
-    
-    
-    
-    
-    
-}
 
 
 

@@ -12,7 +12,7 @@
 #import "AppDelegate.h"
 #import "Reachability.h"
 
-@interface myViewController : UIViewController <UITextFieldDelegate,UIAlertViewDelegate,passTextfield>
+@interface myViewController : UIViewController <UITextFieldDelegate,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 
 
@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *goForwardButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 -(void)textFieldDidEndEditing:(UITextField *)textField;
-@property (nonatomic, weak) id <passTextfield> delegate;
+
 
 
 
