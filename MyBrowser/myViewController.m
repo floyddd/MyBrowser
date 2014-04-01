@@ -73,6 +73,7 @@
 - (void)viewDidLoad
 {
     
+    
     _refreshButton.enabled=NO;
     _addButton.enabled=NO;
     [_goBackButton setEnabled:NO];
@@ -265,6 +266,24 @@
     }else [self checkForWIFIConnection];
     [sender resignFirstResponder];
     _searchBar.text =NULL;
+    
+}
+
+- (void)passData:(NSString *)data
+{
+    [self loadAddress:data];
+          _addressBar.text=data;
+    
+    }
+
+
+
+- (IBAction)popBookmarkTable:(id)sender {
+    UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
+    bookmarkViewController *secView = [st instantiateViewControllerWithIdentifier:@"bookmarkViewController"];
+[self presentViewController:secView animated:YES completion:nil];
+    
+    secView.delegate=self;
     
 }
 @end

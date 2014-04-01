@@ -49,10 +49,21 @@
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([indexPath row]==0) {
-        
-    }
+   UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+              if ([indexPath row]==0) {
+                  
+                  [_delegate passData:cell.textLabel.text];
+                  [self dismissViewControllerAnimated:YES completion:nil];
+                 
+                
+              
+
+              
+              }
+    
 }
+                  
+ 
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

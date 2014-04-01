@@ -72,22 +72,23 @@
                                     <barButtonItem width="13" style="plain" systemItem="fixedSpace" id="hRB-ka-Dwg"/>
                                     <barButtonItem systemItem="bookmarks" id="Iru-AT-1Ww">
                                         <connections>
-                                            <segue destination="XDu-U8-SsR" kind="modal" identifier="segueTwo" id="vm3-O3-J1h"/>
+                                            <action selector="popBookmarkTable:" destination="vXZ-lx-hvc" id="cDt-EW-Ls9"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="26" style="plain" systemItem="fixedSpace" id="7bm-XQ-VX8"/>
+                                    <barButtonItem width="18" style="plain" systemItem="fixedSpace" id="7bm-XQ-VX8"/>
+                                    <barButtonItem style="plain" systemItem="fixedSpace" id="HhB-jL-aul"/>
                                     <barButtonItem systemItem="organize" id="1dr-Mt-fuZ">
                                         <connections>
                                             <segue destination="5sn-w0-WfA" kind="modal" id="mpj-f1-2i5"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="27" style="plain" systemItem="fixedSpace" id="HhB-jL-aul"/>
                                 </items>
                                 <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="0CK-19-a10"/>
                     <connections>
                         <outlet property="addButton" destination="A5v-Qa-LNX" id="kUr-u1-74F"/>
                         <outlet property="addressBar" destination="RGt-cH-UEP" id="8VD-8b-bCR"/>
@@ -100,12 +101,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="257" y="-20"/>
+            <point key="canvasLocation" x="685" y="-20"/>
         </scene>
         <!--Bookmark View Controller-->
         <scene sceneID="1iE-mA-mOc">
             <objects>
-                <viewController id="XDu-U8-SsR" customClass="bookmarkViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="bookmarkViewController" id="XDu-U8-SsR" customClass="bookmarkViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3dH-dW-8D1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -149,13 +150,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="5hP-Ch-b9m"/>
                     <connections>
                         <outlet property="tableView" destination="PvQ-lk-Qao" id="AEj-KN-AKM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqz-IM-V9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="619" y="-20"/>
+            <point key="canvasLocation" x="1145" y="-20"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="kcB-38-Mtk">
@@ -220,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cRM-pB-lZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="973" y="-28"/>
+            <point key="canvasLocation" x="1499" y="-28"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -228,7 +230,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="FSc-zx-WjT"/>
-    </inferredMetricsTieBreakers>
 </document>
