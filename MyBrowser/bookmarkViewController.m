@@ -58,8 +58,9 @@
         
     
               if ([indexPath row]==i) {
-                  
+
                   [_delegate clickBookmark:cell.textLabel.text];
+                  [maindelegate.historyArray addObject:cell.textLabel.text];
                   [self dismissViewControllerAnimated:YES completion:nil];
                  
                 

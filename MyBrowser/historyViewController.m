@@ -26,6 +26,7 @@
         if ([indexPath row]==i) {
             
             [_delegate clickHistory:cell.textLabel.text];
+            [a addObject:cell.textLabel.text];
             [self dismissViewControllerAnimated:YES completion:nil];
             
             
