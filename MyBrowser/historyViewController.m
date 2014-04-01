@@ -14,6 +14,29 @@
 
 @implementation historyViewController
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSMutableArray *a=[maindelegate historyArray];
+    int i;
+    for (i=0; i<[a count]; i++) {
+        
+        
+        if ([indexPath row]==i) {
+            
+            [_delegate clickHistory:cell.textLabel.text];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+            
+            
+        }
+        
+    }
+    
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.

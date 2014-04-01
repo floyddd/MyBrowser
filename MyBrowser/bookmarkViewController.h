@@ -6,19 +6,19 @@
 //  Copyright (c) 2014 MokshaX. All rights reserved.
 //
 
-@protocol secondViewControllerDelegate <NSObject>
+@protocol clickBookmarkDelegate <NSObject>
 
 @required
 
-- (void)passData:(NSString *)data;
+- (void)clickBookmark:(NSString *)bookmark;
 
 @end
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "myViewController.h"
-@interface bookmarkViewController : UIViewController 
-@property (nonatomic, weak) id<secondViewControllerDelegate> delegate;
+@interface bookmarkViewController : UIViewController
+@property (nonatomic, weak) id<clickBookmarkDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)goBac:(id)sender;

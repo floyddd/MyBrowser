@@ -50,14 +50,21 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
-              if ([indexPath row]==0) {
+    
+    AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSMutableArray *a=[maindelegate bookmarksArray];
+    int i;
+    for (i=0; i<[a count]; i++) {
+        
+    
+              if ([indexPath row]==i) {
                   
-                  [_delegate passData:cell.textLabel.text];
+                  [_delegate clickBookmark:cell.textLabel.text];
                   [self dismissViewControllerAnimated:YES completion:nil];
                  
                 
               
-
+              }
               
               }
     

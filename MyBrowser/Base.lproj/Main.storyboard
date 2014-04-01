@@ -79,7 +79,7 @@
                                     <barButtonItem style="plain" systemItem="fixedSpace" id="HhB-jL-aul"/>
                                     <barButtonItem systemItem="organize" id="1dr-Mt-fuZ">
                                         <connections>
-                                            <segue destination="5sn-w0-WfA" kind="modal" id="mpj-f1-2i5"/>
+                                            <action selector="popHistoryTable:" destination="vXZ-lx-hvc" id="oGl-V8-ztU"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -162,7 +162,7 @@
         <!--History View Controller-->
         <scene sceneID="kcB-38-Mtk">
             <objects>
-                <viewController id="5sn-w0-WfA" customClass="historyViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="historyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5sn-w0-WfA" customClass="historyViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jh0-cE-f1I">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

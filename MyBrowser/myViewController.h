@@ -12,11 +12,11 @@
 #import "AppDelegate.h"
 #import "Reachability.h"
 
-@interface myViewController : UIViewController <UITextFieldDelegate,UIAlertViewDelegate,secondViewControllerDelegate>
+@interface myViewController : UIViewController <UITextFieldDelegate,UIAlertViewDelegate,clickBookmarkDelegate,clickHistoryDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 
 - (IBAction)popBookmarkTable:(id)sender;
-
+- (IBAction)popHistoryTable:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *addressBar;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UITextField *searchBar;

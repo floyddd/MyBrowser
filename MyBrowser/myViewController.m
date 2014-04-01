@@ -269,14 +269,28 @@
     
 }
 
-- (void)passData:(NSString *)data
+- (void)clickBookmark:(NSString *)bookmark
 {
-    [self loadAddress:data];
-          _addressBar.text=data;
+    [self loadAddress:bookmark];
+          _addressBar.text=bookmark;
     
     }
 
+- (void)clickHistory:(NSString *)history
+{
+    [self loadAddress:history];
+    _addressBar.text=history;
+    
+}
 
+- (IBAction)popHistoryTable:(id)sender {
+    UIStoryboard *a = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
+    historyViewController *new = [a instantiateViewControllerWithIdentifier:@"historyViewController"];
+    [self presentViewController:new animated:YES completion:nil];
+    
+    new.delegate=self;
+    
+}
 
 - (IBAction)popBookmarkTable:(id)sender {
     UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
