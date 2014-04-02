@@ -45,6 +45,14 @@
     
 }
 
+-(void)showAlert{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection"
+                                                    message:@"Your device is not connected to internet."
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
 - (void)checkForWIFIConnection {
     Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
     
@@ -52,15 +60,7 @@
    
     if (netStatus!=ReachableViaWiFi)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection"
-                                                        message:@"Your device is not connected to internet."
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-
-        
-    
+        [self showAlert];
     }
 }
 

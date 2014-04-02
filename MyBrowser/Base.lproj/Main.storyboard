@@ -51,32 +51,32 @@
                                             <action selector="goBack:" destination="vXZ-lx-hvc" id="txg-ES-qGh"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="15" style="plain" systemItem="fixedSpace" id="QK9-tv-mZS"/>
+                                    <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="QK9-tv-mZS"/>
                                     <barButtonItem title=">" systemItem="fastForward" id="QZE-8D-WYk">
                                         <connections>
                                             <action selector="goForward:" destination="vXZ-lx-hvc" id="UZo-Hv-h8W"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="12" style="plain" systemItem="fixedSpace" id="QPw-AW-kEp"/>
+                                    <barButtonItem width="22" style="plain" systemItem="fixedSpace" id="QPw-AW-kEp"/>
                                     <barButtonItem systemItem="refresh" id="NkN-b8-8gj">
                                         <connections>
                                             <action selector="refreshWebView:" destination="vXZ-lx-hvc" id="jFt-wz-bvh"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="12" style="plain" systemItem="fixedSpace" id="XDp-do-VVW"/>
+                                    <barButtonItem width="22" style="plain" systemItem="fixedSpace" id="XDp-do-VVW"/>
                                     <barButtonItem systemItem="add" id="A5v-Qa-LNX">
                                         <connections>
                                             <segue destination="XDu-U8-SsR" kind="modal" identifier="segueOne" id="FSc-zx-WjT"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="13" style="plain" systemItem="fixedSpace" id="hRB-ka-Dwg"/>
+                                    <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="hRB-ka-Dwg"/>
                                     <barButtonItem systemItem="bookmarks" id="Iru-AT-1Ww">
                                         <connections>
                                             <action selector="popBookmarkTable:" destination="vXZ-lx-hvc" id="cDt-EW-Ls9"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="18" style="plain" systemItem="fixedSpace" id="7bm-XQ-VX8"/>
                                     <barButtonItem style="plain" systemItem="fixedSpace" id="HhB-jL-aul"/>
+                                    <barButtonItem width="22" style="plain" systemItem="fixedSpace" id="7bm-XQ-VX8"/>
                                     <barButtonItem systemItem="organize" id="1dr-Mt-fuZ">
                                         <connections>
                                             <action selector="popHistoryTable:" destination="vXZ-lx-hvc" id="oGl-V8-ztU"/>

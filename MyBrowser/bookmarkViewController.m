@@ -58,11 +58,15 @@
         
     
               if ([indexPath row]==i) {
-
+                  Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
+                  
+                  NetworkStatus netStatus = [wifiReach currentReachabilityStatus];
+                  
+                  if (netStatus==ReachableViaWiFi){
                   [_delegate clickBookmark:cell.textLabel.text];
                   [maindelegate.historyArray addObject:cell.textLabel.text];
                   [self dismissViewControllerAnimated:YES completion:nil];
-                 
+                  } else [self showAlert];
                 
               
               }
@@ -71,7 +75,14 @@
     
 }
                   
- 
+-(void)showAlert{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection"
+                                                    message:@"Your device is not connected to internet."
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

@@ -42,6 +42,7 @@
 		3510329218E096E10047BA1D /* historyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = historyViewController.m; sourceTree = "<group>"; };
 		3575393B18D5AD9300B96750 /* bookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bookmarkViewController.h; sourceTree = "<group>"; };
 		3575393C18D5AD9300B96750 /* bookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bookmarkViewController.m; sourceTree = "<group>"; };
+		3594CD4F18EB58F600041F5C /* MediaAccessibility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaAccessibility.framework; path = System/Library/Frameworks/MediaAccessibility.framework; sourceTree = SDKROOT; };
 		35AA389018CDF1B200ABF2E4 /* MyBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35AA389318CDF1B200ABF2E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		35AA389518CDF1B200ABF2E4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -113,6 +114,7 @@
 		35AA389218CDF1B200ABF2E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3594CD4F18EB58F600041F5C /* MediaAccessibility.framework */,
 				35C43D3418E41A400046DF7D /* SystemConfiguration.framework */,
 				35AA389318CDF1B200ABF2E4 /* Foundation.framework */,
 				35AA389518CDF1B200ABF2E4 /* CoreGraphics.framework */,
@@ -403,7 +405,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyBrowser/MyBrowser-Prefix.pch";
 				INFOPLIST_FILE = "MyBrowser/MyBrowser-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -416,7 +420,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyBrowser/MyBrowser-Prefix.pch";
 				INFOPLIST_FILE = "MyBrowser/MyBrowser-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
