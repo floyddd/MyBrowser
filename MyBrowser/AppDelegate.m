@@ -12,8 +12,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    
+   
+    _arrayOfControllers=[[NSMutableArray alloc]init];
     _bookmarksArray = [[NSMutableArray alloc]initWithObjects:@"http://www.facebook.com",@"http://www.twitter.com",nil];
     _historyArray = [[NSMutableArray alloc] init];
     NSString *myPath = [self saveBookmark];

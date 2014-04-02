@@ -73,8 +73,7 @@
 - (void)viewDidLoad
 {
     
-    
-    _refreshButton.enabled=NO;
+        _refreshButton.enabled=NO;
     _addButton.enabled=NO;
     [_goBackButton setEnabled:NO];
     _goForwardButton.enabled=NO;
@@ -292,12 +291,43 @@
     
 }
 
+- (IBAction)newTab:(id)sender {
+    
+    UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
+    myViewController *newTab = [st instantiateViewControllerWithIdentifier:@"myViewController"];
+    [self presentViewController:newTab animated:YES completion:nil];
+    AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    [historydelegate.arrayOfControllers addObject:newTab];
+    
+    
+    
+}
+- (IBAction)previousTab:(id)sender {
+  AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    int i;
+    for (i=0; i<[historydelegate.arrayOfControllers count]; i++) {
+    [[historydelegate.arrayOfControllers objectAtIndex:i  ]
+                       dismissViewControllerAnimated:YES completion:nil
+     ];
+      
+    }
+}
+
+
 - (IBAction)popBookmarkTable:(id)sender {
     UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
     bookmarkViewController *secView = [st instantiateViewControllerWithIdentifier:@"bookmarkViewController"];
 [self presentViewController:secView animated:YES completion:nil];
     
     secView.delegate=self;
+
     
+}
+- (IBAction)nextTab:(id)sender {
+    AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    int i;
+    for (i=0; i<[historydelegate.arrayOfControllers count]; i++) {
+        [self presentViewController:[historydelegate.arrayOfControllers objectAtIndex:[historydelegate.arrayOfControllers count]-i  ] animated:YES completion:nil];
+    }
 }
 @end

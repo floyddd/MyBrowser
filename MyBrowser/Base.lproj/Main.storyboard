@@ -7,7 +7,7 @@
         <!--My View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="myViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="myViewController" id="vXZ-lx-hvc" customClass="myViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -43,43 +43,86 @@
                                 </connections>
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="VBI-Wu-hUA">
-                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                                <rect key="frame" x="-5" y="436" width="331" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="fixedSpace" id="qLu-nd-wpn"/>
                                     <barButtonItem title="&lt;" systemItem="rewind" id="Nua-Za-qon">
                                         <connections>
                                             <action selector="goBack:" destination="vXZ-lx-hvc" id="txg-ES-qGh"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="QK9-tv-mZS"/>
+                                    <barButtonItem width="11" style="plain" systemItem="fixedSpace" id="QK9-tv-mZS"/>
                                     <barButtonItem title=">" systemItem="fastForward" id="QZE-8D-WYk">
                                         <connections>
                                             <action selector="goForward:" destination="vXZ-lx-hvc" id="UZo-Hv-h8W"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="22" style="plain" systemItem="fixedSpace" id="QPw-AW-kEp"/>
+                                    <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="QPw-AW-kEp"/>
                                     <barButtonItem systemItem="refresh" id="NkN-b8-8gj">
                                         <connections>
                                             <action selector="refreshWebView:" destination="vXZ-lx-hvc" id="jFt-wz-bvh"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="22" style="plain" systemItem="fixedSpace" id="XDp-do-VVW"/>
+                                    <barButtonItem width="13" style="plain" systemItem="fixedSpace" id="XDp-do-VVW"/>
                                     <barButtonItem systemItem="add" id="A5v-Qa-LNX">
                                         <connections>
                                             <segue destination="XDu-U8-SsR" kind="modal" identifier="segueOne" id="FSc-zx-WjT"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="hRB-ka-Dwg"/>
+                                    <barButtonItem width="10" style="plain" systemItem="fixedSpace" id="hRB-ka-Dwg"/>
                                     <barButtonItem systemItem="bookmarks" id="Iru-AT-1Ww">
                                         <connections>
                                             <action selector="popBookmarkTable:" destination="vXZ-lx-hvc" id="cDt-EW-Ls9"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="fixedSpace" id="HhB-jL-aul"/>
-                                    <barButtonItem width="22" style="plain" systemItem="fixedSpace" id="7bm-XQ-VX8"/>
+                                    <barButtonItem width="12" style="plain" systemItem="fixedSpace" id="7bm-XQ-VX8"/>
                                     <barButtonItem systemItem="organize" id="1dr-Mt-fuZ">
                                         <connections>
                                             <action selector="popHistoryTable:" destination="vXZ-lx-hvc" id="oGl-V8-ztU"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="fixedSpace" id="6aX-gD-Dyo"/>
+                                    <barButtonItem style="plain" id="Ax5-6o-a1l">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="utw-AO-3xe">
+                                            <rect key="frame" x="263" y="6" width="9" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="&lt;">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="previousTab:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="mhw-Sy-ueT"/>
+                                            </connections>
+                                        </button>
+                                        <connections>
+                                            <action selector="previousTab:" destination="vXZ-lx-hvc" id="aaF-Et-yxM"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="4" style="plain" systemItem="fixedSpace" id="vah-6W-Db0"/>
+                                    <barButtonItem style="plain" id="I4c-Tg-n0n">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JG5-Qy-AWZ">
+                                            <rect key="frame" x="286" y="5" width="13" height="35"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                            <state key="normal" title=">"/>
+                                        </button>
+                                        <connections>
+                                            <action selector="nextTab:" destination="vXZ-lx-hvc" id="sT3-cT-vgN"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="XIJ-BY-faX">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oDb-Vu-dx3">
+                                            <rect key="frame" x="309" y="6" width="10" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="+">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="newTab:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="R6m-84-0J5"/>
+                                            </connections>
+                                        </button>
+                                        <connections>
+                                            <action selector="newTab:" destination="vXZ-lx-hvc" id="KVt-hF-Yi8"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -101,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="685" y="-20"/>
+            <point key="canvasLocation" x="385" y="-12"/>
         </scene>
         <!--Bookmark View Controller-->
         <scene sceneID="1iE-mA-mOc">
@@ -157,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqz-IM-V9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1145" y="-20"/>
+            <point key="canvasLocation" x="732" y="-12"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="kcB-38-Mtk">
@@ -222,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cRM-pB-lZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1499" y="-28"/>
+            <point key="canvasLocation" x="1077" y="-12"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
