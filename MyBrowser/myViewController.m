@@ -292,6 +292,20 @@
     
 }
 
+- (IBAction)newTab:(id)sender {
+    
+    
+        
+        UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
+        myViewController *newTab = [st instantiateViewControllerWithIdentifier:@"myViewController"];
+        [self presentViewController:newTab animated:YES completion:nil];
+       
+        
+        
+        
+    
+}
+
 - (IBAction)popBookmarkTable:(id)sender {
     UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
     bookmarkViewController *secView = [st instantiateViewControllerWithIdentifier:@"bookmarkViewController"];

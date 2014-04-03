@@ -14,6 +14,7 @@
 
 @interface myViewController : UIViewController <UITextFieldDelegate,UIAlertViewDelegate,clickBookmarkDelegate,clickHistoryDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
+- (IBAction)newTab:(id)sender;
 
 - (IBAction)popBookmarkTable:(id)sender;
 - (IBAction)popHistoryTable:(id)sender;

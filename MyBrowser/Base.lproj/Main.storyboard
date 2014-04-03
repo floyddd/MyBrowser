@@ -7,7 +7,7 @@
         <!--My View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="myViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="myViewController" id="vXZ-lx-hvc" customClass="myViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -43,15 +43,16 @@
                                 </connections>
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="VBI-Wu-hUA">
-                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                                <rect key="frame" x="-7" y="436" width="327" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="fixedSpace" id="Vpq-Zg-TcE"/>
                                     <barButtonItem title="&lt;" systemItem="rewind" id="Nua-Za-qon">
                                         <connections>
                                             <action selector="goBack:" destination="vXZ-lx-hvc" id="txg-ES-qGh"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="QK9-tv-mZS"/>
+                                    <barButtonItem width="9" style="plain" systemItem="fixedSpace" id="QK9-tv-mZS"/>
                                     <barButtonItem title=">" systemItem="fastForward" id="QZE-8D-WYk">
                                         <connections>
                                             <action selector="goForward:" destination="vXZ-lx-hvc" id="UZo-Hv-h8W"/>
@@ -69,18 +70,30 @@
                                             <segue destination="XDu-U8-SsR" kind="modal" identifier="segueOne" id="FSc-zx-WjT"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="hRB-ka-Dwg"/>
+                                    <barButtonItem width="10" style="plain" systemItem="fixedSpace" id="hRB-ka-Dwg"/>
                                     <barButtonItem systemItem="bookmarks" id="Iru-AT-1Ww">
                                         <connections>
                                             <action selector="popBookmarkTable:" destination="vXZ-lx-hvc" id="cDt-EW-Ls9"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="fixedSpace" id="HhB-jL-aul"/>
-                                    <barButtonItem width="22" style="plain" systemItem="fixedSpace" id="7bm-XQ-VX8"/>
+                                    <barButtonItem width="18" style="plain" systemItem="fixedSpace" id="7bm-XQ-VX8"/>
                                     <barButtonItem systemItem="organize" id="1dr-Mt-fuZ">
                                         <connections>
                                             <action selector="popHistoryTable:" destination="vXZ-lx-hvc" id="oGl-V8-ztU"/>
                                         </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="glC-u0-p9P">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bQ5-Ry-b6b">
+                                            <rect key="frame" x="284" y="3" width="34" height="39"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="New">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="newTab:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="fB6-sG-qVn"/>
+                                            </connections>
+                                        </button>
                                     </barButtonItem>
                                 </items>
                                 <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
