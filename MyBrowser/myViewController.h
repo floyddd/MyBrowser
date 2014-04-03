@@ -16,11 +16,10 @@
  
 }
 
-- (IBAction)nextTab:(id)sender;
-@property (nonatomic, copy) dispatch_block_t completionBlock;
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 
-- (IBAction)previousTab:(id)sender;
+
 - (IBAction)newTab:(id)sender;
 
 

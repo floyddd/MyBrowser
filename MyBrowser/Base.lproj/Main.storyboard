@@ -43,7 +43,7 @@
                                 </connections>
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="VBI-Wu-hUA">
-                                <rect key="frame" x="-5" y="436" width="331" height="44"/>
+                                <rect key="frame" x="0.0" y="436" width="331" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="fixedSpace" id="qLu-nd-wpn"/>
@@ -83,38 +83,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="fixedSpace" id="6aX-gD-Dyo"/>
-                                    <barButtonItem style="plain" id="Ax5-6o-a1l">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="utw-AO-3xe">
-                                            <rect key="frame" x="263" y="6" width="9" height="33"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="&lt;">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="previousTab:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="mhw-Sy-ueT"/>
-                                            </connections>
-                                        </button>
-                                        <connections>
-                                            <action selector="previousTab:" destination="vXZ-lx-hvc" id="aaF-Et-yxM"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="4" style="plain" systemItem="fixedSpace" id="vah-6W-Db0"/>
-                                    <barButtonItem style="plain" id="I4c-Tg-n0n">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JG5-Qy-AWZ">
-                                            <rect key="frame" x="286" y="5" width="13" height="35"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                            <state key="normal" title=">"/>
-                                        </button>
-                                        <connections>
-                                            <action selector="nextTab:" destination="vXZ-lx-hvc" id="sT3-cT-vgN"/>
-                                        </connections>
-                                    </barButtonItem>
                                     <barButtonItem style="plain" id="XIJ-BY-faX">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oDb-Vu-dx3">
-                                            <rect key="frame" x="309" y="6" width="10" height="33"/>
+                                            <rect key="frame" x="263" y="6" width="31" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="+">
+                                            <state key="normal" title="New">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
