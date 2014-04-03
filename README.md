@@ -1,6 +1,6 @@
 MyBrowser
 ===========
-A simple iPhone Browser built on Xcode 5 for iOS 7 which uses ARC.
+A simple iPhone web Browser built on Xcode 5 for iOS 7 which uses ARC.
 
 Features:
 
