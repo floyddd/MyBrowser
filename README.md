@@ -13,7 +13,7 @@ Features:
 - Check internet connection and display alert if no connection.
 
 
-![alt tag](http://i61.tinypic.com/2z8wbkk.png)
+
 
 
 Third party Frameworks
