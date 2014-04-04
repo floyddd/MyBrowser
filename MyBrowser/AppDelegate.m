@@ -14,7 +14,7 @@
 {
     
     
-    _bookmarksArray = [[NSMutableArray alloc]initWithObjects:@"http://www.facebook.com",@"http://www.twitter.com",nil];
+    _bookmarksArray = [[NSMutableArray alloc]initWithObjects:@"http://www.facebook.com",@"http://www.twitter.com",@"http://www.imdb.com",nil];
     _historyArray = [[NSMutableArray alloc] init];
     NSString *myPath = [self saveBookmark];
 

@@ -15,8 +15,8 @@
 @interface myViewController : UIViewController <UITextFieldDelegate,UIAlertViewDelegate,clickBookmarkDelegate,clickHistoryDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 - (IBAction)newTab:(id)sender;
+- (IBAction)popBookmark:(id)sender;
 
-- (IBAction)popBookmarkTable:(id)sender;
 - (IBAction)popHistoryTable:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *addressBar;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;

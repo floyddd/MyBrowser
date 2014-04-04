@@ -78,7 +78,7 @@
     _addButton.enabled=NO;
     [_goBackButton setEnabled:NO];
     _goForwardButton.enabled=NO;
-    [self checkForWIFIConnection];
+    
     
     [super viewDidLoad];
     }
@@ -298,20 +298,25 @@
         
         UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
         myViewController *newTab = [st instantiateViewControllerWithIdentifier:@"myViewController"];
-        [self presentViewController:newTab animated:YES completion:nil];
+    [self presentViewController:newTab animated:YES completion:nil];
        
-        
-        
         
     
 }
+-(void)log{
+    NSLog(@"log");
+}
 
-- (IBAction)popBookmarkTable:(id)sender {
+- (IBAction)popBookmark:(id)sender {
     UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
     bookmarkViewController *secView = [st instantiateViewControllerWithIdentifier:@"bookmarkViewController"];
-[self presentViewController:secView animated:YES completion:nil];
+    [self presentViewController:secView animated:YES completion:nil];
     
     secView.delegate=self;
     
 }
-@end
+
+
+
+
+   @end

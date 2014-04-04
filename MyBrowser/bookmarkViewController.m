@@ -30,6 +30,9 @@
     
     return 1;
 }
+
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -94,13 +97,45 @@
 }
 
 
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        int index = indexPath.row;
+        AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+        NSMutableArray *a=[maindelegate bookmarksArray];
+        [a removeObjectAtIndex:index];
+
+        
+        [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                         withRowAnimation:UITableViewRowAnimationFade];
+        
+        
+    }
+}
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+    AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSMutableArray *a=[maindelegate bookmarksArray];
+    NSString *sourceItem = a[sourceIndexPath.row];
+    [a removeObjectAtIndex:sourceIndexPath.row];
+    [a insertObject:sourceItem atIndex:destinationIndexPath.row];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row==0) {
+        return NO;}if (indexPath.row==1) {
+            return NO;}
+    
+   else return YES;
+}
+
+
 - (void)viewDidLoad
 {
-      
-    
-
+   
    [super viewDidLoad];
     [[self tableView] reloadData];
+    
 
 }
 
@@ -110,9 +145,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)editBookmark:(id)sender{
+    if ([_editBookmarkButton.currentTitle isEqualToString:@"Edit"]) {
+        
+    
+        [        _tableView setEditing:YES animated:YES ];
+    [_editBookmarkButton setTitle:@"Done" forState:UIControlStateNormal];
+    } else {[_editBookmarkButton setTitle:@"Edit" forState:UIControlStateNormal];
+        [        _tableView setEditing:NO animated:YES ];
+
+}
+}
 
 
-- (IBAction)goBac:(id)sender {
+- (IBAction)dismiss:(id)sender {
     
     [self dismissViewControllerAnimated:YES completion:nil];
     }

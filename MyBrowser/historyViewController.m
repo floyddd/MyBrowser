@@ -101,7 +101,37 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)goBack:(id)sender {
+
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        int index = indexPath.row;
+        AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
+        NSMutableArray *a=[maindelegate historyArray];
+        [a removeObjectAtIndex:index];
+        
+        
+        [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                                 withRowAnimation:UITableViewRowAnimationFade];
+        
+        
+    }
+}
+
+- (IBAction)editHistory:(id)sender{
+    if ([_editHistoryButton.currentTitle isEqualToString:@"Edit"]) {
+        
+        
+        [        _tableView setEditing:YES animated:YES ];
+        [_editHistoryButton setTitle:@"Done" forState:UIControlStateNormal];
+    } else {[_editHistoryButton setTitle:@"Edit" forState:UIControlStateNormal];
+        [        _tableView setEditing:NO animated:YES ];
+        
+    }
+}
+
+- (IBAction)dismiss:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

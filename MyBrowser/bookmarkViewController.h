@@ -18,10 +18,14 @@
 #import "AppDelegate.h"
 #import "myViewController.h"
 @interface bookmarkViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UIButton *editBookmarkButton;
+
 @property (nonatomic, weak) id<clickBookmarkDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+- (IBAction)editBookmark:(id)sender;
 
-- (IBAction)goBac:(id)sender;
+- (IBAction)dismiss:(id)sender;
 
 
 
