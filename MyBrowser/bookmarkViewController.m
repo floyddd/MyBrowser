@@ -5,7 +5,8 @@
 //  Created by MokshaX on 3/16/14.
 //  Copyright (c) 2014 MokshaX. All rights reserved.
 //
-
+#define delegatez  (((AppDelegate *)[[UIApplication sharedApplication] delegate]))
+#define b [delegatez bookmarksArray]
 #import "bookmarkViewController.h"
 #import "AppDelegate.h"
 @interface bookmarkViewController ()
@@ -42,9 +43,8 @@
     }
     
     // Configure the cell...
-    AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSMutableArray *a=[maindelegate bookmarksArray];
-    cell.textLabel.text = [a objectAtIndex:[indexPath row]];
+    
+    cell.textLabel.text = [b objectAtIndex:[indexPath row]];
     return cell;
    
     
@@ -55,9 +55,9 @@
    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
     
     AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSMutableArray *a=[maindelegate bookmarksArray];
+    
     int i;
-    for (i=0; i<[a count]; i++) {
+    for (i=0; i<[b count]; i++) {
         
     
               if ([indexPath row]==i) {
@@ -91,9 +91,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSMutableArray *a=[maindelegate bookmarksArray];
-    return [a count];
+    
+    return [b count];
 }
 
 
@@ -102,9 +101,8 @@
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         int index = indexPath.row;
-        AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-        NSMutableArray *a=[maindelegate bookmarksArray];
-        [a removeObjectAtIndex:index];
+        
+        [b removeObjectAtIndex:index];
 
         
         [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
@@ -114,11 +112,11 @@
     }
 }
 -(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
-    AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSMutableArray *a=[maindelegate bookmarksArray];
-    NSString *sourceItem = a[sourceIndexPath.row];
-    [a removeObjectAtIndex:sourceIndexPath.row];
-    [a insertObject:sourceItem atIndex:destinationIndexPath.row];
+    
+    
+    NSString *sourceItem = b[sourceIndexPath.row];
+    [b removeObjectAtIndex:sourceIndexPath.row];
+    [b insertObject:sourceItem atIndex:destinationIndexPath.row];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{

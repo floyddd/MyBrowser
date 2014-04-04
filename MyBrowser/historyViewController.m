@@ -5,7 +5,8 @@
 //  Created by MokshaX on 3/24/14.
 //  Copyright (c) 2014 MokshaX. All rights reserved.
 //
-
+#define delegatez (((AppDelegate *)[[UIApplication sharedApplication]delegate]))
+#define c [delegatez historyArray]
 #import "historyViewController.h"
 
 @interface historyViewController ()
@@ -17,10 +18,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSMutableArray *a=[maindelegate historyArray];
+    
     int i;
-    for (i=0; i<[a count]; i++) {
+    for (i=0; i<[c count]; i++) {
         
         
         if ([indexPath row]==i) {
@@ -30,7 +30,7 @@
             
             if (netStatus==ReachableViaWiFi){
             [_delegate clickHistory:cell.textLabel.text];
-            [a addObject:cell.textLabel.text];
+            [c addObject:cell.textLabel.text];
             [self dismissViewControllerAnimated:YES completion:nil];
             
             } else [self showAlert];
@@ -57,10 +57,9 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSMutableArray *a=historydelegate.historyArray;
+   
     // Return the number of rows in the section.
-    return [a count];
+    return [c count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -71,9 +70,8 @@
     }
     
     // Configure the cell...
-    AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSMutableArray *a=historydelegate.historyArray;
-    cell.textLabel.text = [a objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [c objectAtIndex:indexPath.row];
     return cell;
     
     
@@ -107,9 +105,8 @@
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         int index = indexPath.row;
-        AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-        NSMutableArray *a=[maindelegate historyArray];
-        [a removeObjectAtIndex:index];
+        
+        [c removeObjectAtIndex:index];
         
         
         [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
@@ -136,9 +133,9 @@
 }
 
 - (IBAction)clearHistory:(UIButton *)sender {
-    AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
     
-    [historydelegate.historyArray removeAllObjects ];
+    
+    [c removeAllObjects ];
                        
     [_tableView reloadData];
 }

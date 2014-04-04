@@ -5,7 +5,9 @@
 //  Created by MokshaX on 3/10/14.
 //  Copyright (c) 2014 MokshaX. All rights reserved.
 //
-
+#define delegatez  (((AppDelegate *)[[UIApplication sharedApplication] delegate]))
+#define b [delegatez bookmarksArray]
+#define c [delegatez historyArray]
 #import "myViewController.h"
 
 
@@ -72,6 +74,16 @@
 
 - (void)viewDidLoad
 {
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goForward:)];
+     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goBack:)];
+     
+     // Setting the swipe direction.
+     [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+     [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+    [swipeLeft setNumberOfTouchesRequired:1];
+    [swipeRight setNumberOfTouchesRequired:1];
+    [_webView addGestureRecognizer:swipeLeft];
+    [_webView addGestureRecognizer:swipeRight];
     
     
     _refreshButton.enabled=NO;
@@ -92,10 +104,8 @@
         
         if (textField==_searchBar){
             
-            AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-            NSMutableArray *a=historydelegate.historyArray;
-            NSString *b=[NSString stringWithFormat:@"http://www.google.com/search?q=%@",textField.text] ;
-            [a addObject:b];
+                        NSString *z=[NSString stringWithFormat:@"http://www.google.com/search?q=%@",textField.text] ;
+            [c addObject:z];
         
         }}}
 
@@ -150,13 +160,12 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    AppDelegate *maindelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSMutableArray *a=maindelegate.bookmarksArray;
+    
         if([segue.identifier isEqualToString:@"segueOne"]){
             
             if ([_addressBar.text length]!=0){
-                NSString *b=[NSString stringWithFormat:@"%@",_addressBar.text];
-                [a addObject:b];
+                NSString *z=[NSString stringWithFormat:@"%@",_addressBar.text];
+                [b addObject:z];
                 
                
                 
@@ -213,9 +222,8 @@
                 _addressBar.text=URL.absoluteString;
                 _searchBar.text=NULL;
                 [_webView loadRequest:request];
-                AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-                NSMutableArray *a=historydelegate.historyArray;
-                [a addObject:URL.absoluteString];
+                
+                [c addObject:URL.absoluteString];
             }
 
             
@@ -258,10 +266,9 @@
         
         
     [self loadAddress:_addressBar.text];
-        AppDelegate *historydelegate= (AppDelegate *)[[UIApplication sharedApplication]delegate];
-        NSMutableArray *a=historydelegate.historyArray;
         
-        [a addObject:_addressBar.text];
+        
+        [c addObject:_addressBar.text];
 
     }else [self checkForWIFIConnection];
     [sender resignFirstResponder];
@@ -303,9 +310,8 @@
         
     
 }
--(void)log{
-    NSLog(@"log");
-}
+
+
 
 - (IBAction)popBookmark:(id)sender {
     UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
