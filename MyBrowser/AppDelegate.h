@@ -12,10 +12,11 @@
 #import "Reachability.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>{
-   
-}
+    }
 
 @property (strong, nonatomic) UIWindow *window;
-@property(nonatomic,retain) NSMutableArray *bookmarksArray;
-@property(nonatomic,retain) NSMutableArray *historyArray;
+@property(nonatomic,strong) NSMutableArray *bookmarksArray;
+@property(nonatomic,strong) NSMutableArray *historyArray;
+@property(nonatomic, strong) NSMutableArray *tabArray;
+
 @end
