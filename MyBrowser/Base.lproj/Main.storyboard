@@ -46,7 +46,7 @@
                                     <barButtonItem width="15" style="plain" systemItem="fixedSpace" id="XDp-do-VVW"/>
                                     <barButtonItem systemItem="add" id="A5v-Qa-LNX">
                                         <connections>
-                                            <segue destination="XDu-U8-SsR" kind="modal" identifier="segueOne" id="FSc-zx-WjT"/>
+                                            <action selector="addBookmark:" destination="vXZ-lx-hvc" id="4eR-8i-lA7"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="10" style="plain" systemItem="fixedSpace" id="hRB-ka-Dwg"/>

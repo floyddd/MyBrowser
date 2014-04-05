@@ -158,18 +158,7 @@
 }
 
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
-    
-        if([segue.identifier isEqualToString:@"segueOne"]){
-            
-            if ([_addressBar.text length]!=0){
-                NSString *z=[NSString stringWithFormat:@"%@",_addressBar.text];
-                [b addObject:z];
-                
-               
-                
-            }}}
+
    
     - (void) loadWebPageFromString:(NSString *)string {
     NSURL *url = [NSURL URLWithString:string];
@@ -302,7 +291,7 @@
 - (IBAction)newTab:(id)sender {
     
     
-        
+   
         UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
         myViewController *newTab = [st instantiateViewControllerWithIdentifier:@"myViewController"];
     [self presentViewController:newTab animated:YES completion:nil];
@@ -322,7 +311,26 @@
     
 }
 
+- (IBAction)addBookmark:(id)sender {
+    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Bookmark" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Add Bookmark", nil];
+	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [popupQuery showInView:self.view];
+    }
 
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        if ([_addressBar.text length]!=0){
+            NSString *z=[NSString stringWithFormat:@"%@",_addressBar.text];
+            [b addObject:z];
+            
+            
+            
+        }
+
+    }
+}
 
 
    @end
